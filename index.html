@@ -25,7 +25,7 @@
         }
 
         .sidebar {
-            width: 200px;
+            width: 260px;
             background-color: var(--sidebar-bg);
             border-right: 1px solid var(--notion-border);
             display: flex;
@@ -71,30 +71,11 @@
         }
 
         .content-container {
-            max-width: 800px;
+            max-width: 720px;
             margin: 0 auto;
         }
 
-        /* --- 橫幅標題區 (取代原本的圖片) --- */
-        .header-text-area {
-            padding: 60px 0 40px 0;
-            border-bottom: 1px solid var(--notion-border);
-            margin-bottom: 40px;
-        }
-
-        .header-text-area h1 {
-            font-size: 2.8em;
-            margin: 0;
-            font-family: 'Noto Serif TC', serif;
-        }
-
-        .header-text-area p {
-            color: #666;
-            margin-top: 10px;
-            font-size: 1.1em;
-        }
-
-        /* --- 人物介紹（大圖卡片版） --- */
+      /* --- 人物介紹（大圖卡片版） --- */
         .intro-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -133,36 +114,6 @@
         .char-info h3 { margin: 0 0 10px 0; font-size: 1.3em; }
         .char-info p { margin: 0; font-size: 0.95em; line-height: 1.6; color: #666; }
 
-        /* --- 人物相簿區塊 --- */
-        .album-section {
-            margin-top: 60px;
-        }
-
-        .album-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .album-item {
-            aspect-ratio: 1 / 1;
-            border-radius: 8px;
-            overflow: hidden;
-            background: #eee;
-            border: 1px solid var(--notion-border);
-            transition: transform 0.2s;
-        }
-
-        .album-item:hover { transform: scale(1.02); }
-        .album-item img { width: 100%; height: 100%; object-fit: cover; }
-
-        .chapter-section {
-            padding-top: 60px;
-            margin-bottom: 80px;
-            min-height: 100vh;
-        }
-
         .novel-text {
             font-family: 'Noto Serif TC', serif;
             font-size: 1.15em;
@@ -170,12 +121,19 @@
             white-space: pre-line;
         }
 
-        h2 { border-bottom: 1px solid var(--notion-border); padding-bottom: 15px; margin-top: 40px; }
+        .header-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        h2 { border-bottom: 1px solid var(--notion-border); padding-bottom: 15px; }
 
         @media (max-width: 768px) {
             body { flex-direction: column; overflow: auto; }
             .sidebar { width: 100%; height: auto; border-right: none; }
-            .main-content { padding: 20px; }
         }
     </style>
 </head>
@@ -190,31 +148,27 @@
     <div class="nav-group-label">CHAPTERS</div>
     <a href="#ch1" class="nav-item">📄 測試－第一章</a>
     <a href="#ch2" class="nav-item">📄 測試－第二章</a>
-    <a href="#ch3" class="nav-item">📄 測試－第三章</a>
-</nav>
+    <a href="#ch3" class="nav-item">📄 測試－第三章</a> </nav>
 
 <main class="main-content">
     <div class="content-container">
         
         <section id="home" class="chapter-section">
-            <div class="header-text-area">
-                <h1>卿卿我我</h1>
-                <p>在這裡介紹你的故事舞台與主要角色。</p>
-            </div>
-            
+            <img src="https://images.unsplash.com/photo-1464802686167-b939a67e06a1?auto=format&fit=crop&w=1200&q=80" class="header-img">
+            <h1>人物介紹</h1>
             <div class="intro-grid">
                 <div class="char-card">
                     <img src="images/印提(微笑).png" class="char-avatar" alt="印提">
                     <div class="char-info">
                         <h3>印提</h3>
-                        <p>這裡是印提的介紹文字。您可以描述他的性格特點或是他在故事中的定位。</p>
+                        <p>這裡是印提的介紹文字。您可以描述他的性格、背景或是他在故事中的定位。</p>
                     </div>
                 </div>
                 <div class="char-card">
-                    <div class="char-avatar" style="background:#ddd; display:flex; align-items:center; justify-content:center; font-size: 60px; color: white;">?</div>
+                    <div class="char-avatar" style="background:#ccc; display:flex; align-items:center; justify-content:center; font-size: 40px; color: white;">?</div>
                     <div class="char-info">
                         <h3>塔維克</h3>
-                        <p>這裡是塔維克的介紹文字。您可以上傳新相片到 images 資料夾來替換這裡。</p>
+                        <p>這裡是塔維克的介紹文字。您可以點擊 GitHub 編輯器來修改這段內容。</p>
                     </div>
                 </div>
             </div>
