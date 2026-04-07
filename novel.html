@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卿卿我我 | 小說作品集</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --notion-bg: #ffffff;
+            --notion-text: #37352f;
+            --notion-border: #edeef0;
+            --tag-r18-bg: #ffe2dd;
+            --tag-r18-text: #d4402c;
+            --tag-cp-bg: #e8deee;
+            --tag-cp-text: #6940a5;
+            --tag-gray-bg: #f1f1f0;
+            --tag-gray-text: #50504e;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', -apple-system, sans-serif;
+            background-color: var(--notion-bg);
+            color: var(--notion-text);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* 封面圖片與標題區 */
+        .header {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .cover-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            background: #eee; /* 沒圖片時的底色 */
+        }
+
+        .title-area {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .title-area h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        /* 表格樣式 (模擬 Notion Table) */
+        .table-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 20px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-top: 1px solid var(--notion-border);
+        }
+
+        th {
+            text-align: left;
+            color: rgba(55, 53, 47, 0.6);
+            font-weight: 400;
+            font-size: 14px;
+            padding: 10px;
+            border-bottom: 1px solid var(--notion-border);
+        }
+
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid var(--notion-border);
+            vertical-align: middle;
+        }
+
+        .novel-link {
+            text-decoration: none;
+            color: var(--notion-text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .novel-link:hover { text-decoration: underline; }
+
+        /* 標籤樣式 */
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-right: 4px;
+            white-space: nowrap;
+        }
+
+        .r18 { background: var(--tag-r18-bg); color: var(--tag-r18-text); }
+        .cp { background: var(--tag-cp-bg); color: var(--tag-cp-text); }
+        .gray { background: var(--tag-gray-bg); color: var(--tag-gray-text); }
+
+        /* 閱讀區 (點擊連結後跳轉的內容) */
+        .content-section {
+            max-width: 700px;
+            margin: 80px auto;
+            padding: 0 20px;
+            font-family: 'Noto Serif TC', serif; /* 小說內容用明體 */
+        }
+
+        .warning-box {
+            background-color: #f8f8f7;
+            border-left: 4px solid #f1c40f;
+            padding: 15px 20px;
+            margin-bottom: 40px;
+            font-size: 0.95em;
+            border-radius: 4px;
+        }
+
+        .novel-text {
+            font-size: 1.15em;
+            letter-spacing: 0.03em;
+            line-height: 1.8;
+            white-space: pre-line; /* 保留換行感 */
+        }
+
+        hr { border: 0; border-top: 1px solid var(--notion-border); margin: 60px 0; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <img src="https://images.unsplash.com/photo-1464802686167-b939a67e06a1?auto=format&fit=crop&w=1200&q=80" class="cover-img" alt="Cover">
+    <div class="title-area">
+        <h1>卿卿我我—旅程分享</h1>
+    </div>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 40%;">文章</th>
+                <th style="width: 20%;">CP</th>
+                <th style="width: 40%;">Tags</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="#ch1" class="novel-link">📄 測試－第一章</a></td>
+                <td><span class="tag cp">塔維克/印提</span></td>
+                <td><span class="tag r18">R18</span><span class="tag gray">星際</span></td>
+            </tr>
+            <tr>
+                <td><a href="#ch1" class="novel-link">📄 測試－第二章</a></td>
+                <td><span class="tag cp">塔維克/印提</span></td>
+                <td><span class="tag r18">R18</span><span class="tag gray">星際</span></td>
+            </tr>
+            <tr>
+                <td><a href="#ch1" class="novel-link">📄 測試－第三章</a></td>
+                <td><span class="tag cp">塔維克/印提</span></td>
+                <td><span class="tag r18">R18</span><span class="tag gray">星際</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<hr>
+
+<article class="content-section" id="ch1">
+    <h2>1. Up all night</h2>
+    
+    <div class="warning-box">
+        １２３４５６
+    </div>
+
+    <div class="novel-text">
+  <p>你醒來時，發現自己正倒臥在廢土上。</p>
+        <p>黏稠、帶有金屬味的泥土黏著你的臉頰。天色混濁，隱約能見奇特的飛行物……那群東西像是樹枝與鳥骨拼接而成的，甩著透明膜狀的翅，飛過你頭頂時還發出啪搭啪搭的聲音。</p>
+        <img src="images/印提(微笑).png" style="width:100%; border-radius:4px; margin: 20px 0;">
+        <p>身下是濕軟的苔蘚與粗糙泥土交織的觸感，能聞得到混合著腐葉、潮氣與鐵鏽味的氣息。滑膩的植物根莖貼在衣物與皮膚之間，那種不舒服的黏膩感使你只想立刻起身。</p>
+    </div>
+</article>
+
+</body>
+</html>
