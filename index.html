@@ -128,4 +128,74 @@
             width: 100%;
             height: 250px;
             object-fit: cover;
-            border-radius: 1
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; overflow: auto; }
+            .sidebar { width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--notion-border); }
+            .main-content { height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="sidebar">
+    <div class="sidebar-title"><a href="#home">🍰 卿卿我我</a></div>
+    
+    <div class="nav-group-label">關於</div>
+    <a href="#home" class="nav-item">👥 人物介紹</a>
+    
+    <div class="nav-group-label">章節列表</div>
+    <a href="#ch1" class="nav-item">📄 測試－第一章</a>
+    <a href="#ch2" class="nav-item">📄 測試－第二章</a>
+    <a href="#ch3" class="nav-item">📄 測試－第三章</a>
+</nav>
+
+<main class="main-content">
+    <div class="content-container">
+        
+        <section id="home" class="chapter-section">
+            <img src="https://images.unsplash.com/photo-1464802686167-b939a67e06a1?auto=format&fit=crop&w=1200&q=80" class="header-img">
+            <h1>人物介紹</h1>
+            <p>在這裡介紹你的故事舞台與主要角色。</p>
+
+            <div class="intro-grid">
+                <div class="char-card">
+                    <img src="images/印提(微笑).png" class="char-avatar" alt="印提">
+                    <div class="char-info">
+                        <h3>印提</h3>
+                        <p>角色描述：例如性格、能力、或是與塔維克的關係。這裡可以寫得很詳細。</p>
+                    </div>
+                </div>
+
+                <div class="char-card">
+                    <img src="https://via.placeholder.com/80" class="char-avatar" alt="塔維克">
+                    <div class="char-info">
+                        <h3>塔維克</h3>
+                        <p>角色描述：另一位主角的設定資訊。這是一個示範卡片。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <article class="chapter-section" id="ch1">
+            <h2>1. Up all night</h2>
+            <div class="novel-text">
+                你醒來時，發現自己正倒臥在廢土上。
+                黏稠、帶有金屬味的泥土黏著你的臉頰...
+                
+                <img src="images/印提(微笑).png" style="width:100%; border-radius:8px; margin: 20px 0;">
+                
+                這裡放你的第一章內容。
+            </div>
+        </article>
+
+        </div>
+</main>
+
+</body>
+</html>
