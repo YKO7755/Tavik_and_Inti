@@ -24,6 +24,7 @@
             color: var(--notion-text);
         }
 
+        /* 左側側邊欄 */
         .sidebar {
             width: 260px;
             background-color: var(--sidebar-bg);
@@ -63,6 +64,7 @@
 
         .nav-item:hover { background-color: #efefee; }
 
+        /* 右側主要內容區 */
         .main-content {
             flex: 1;
             overflow-y: auto;
@@ -71,39 +73,60 @@
         }
 
         .content-container {
-            max-width: 720px;
+            max-width: 850px;
             margin: 0 auto;
         }
 
-        /* --- 人物介紹放大版 --- */
+        /* --- 人物相簿卡片設計 --- */
         .intro-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
             margin-top: 30px;
         }
 
         .char-card {
             background: var(--card-bg);
-            border-radius: 12px;
-            padding: 30px;
+            border-radius: 16px;
+            overflow: hidden;
             display: flex;
-            flex-direction: column; /* 改為上下排列 */
-            gap: 20px;
-            align-items: center; /* 居中 */
-            text-align: center;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            border: 1px solid var(--notion-border);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .char-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
         }
 
         .char-avatar {
-            width: 150px; /* 圖片放大到 150px */
-            height: 150px;
-            border-radius: 50%;
+            width: 100%;
+            height: 350px;
             object-fit: cover;
             background: #eee;
-            border: 3px solid white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
+        .char-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .char-info h3 { 
+            margin: 0 0 10px 0; 
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .char-info p { 
+            margin: 0; 
+            font-size: 0.9em; 
+            color: #666; 
+            line-height: 1.6; 
+        }
+
+        /* 文章段落樣式 */
         .chapter-section {
             padding-top: 60px;
             margin-bottom: 80px;
@@ -119,17 +142,19 @@
 
         .header-img {
             width: 100%;
-            height: 240px;
+            height: 250px;
             object-fit: cover;
             border-radius: 12px;
             margin-bottom: 30px;
         }
 
+        h1 { font-size: 2.2em; margin-bottom: 10px; }
         h2 { border-bottom: 1px solid var(--notion-border); padding-bottom: 15px; }
 
         @media (max-width: 768px) {
             body { flex-direction: column; overflow: auto; }
             .sidebar { width: 100%; height: auto; border-right: none; }
+            .main-content { padding: 20px; }
         }
     </style>
 </head>
@@ -139,32 +164,36 @@
     <div class="sidebar-title"><a href="#home">🍰 卿卿我我</a></div>
     
     <div class="nav-group-label">ABOUT</div>
-    <a href="#home" class="nav-item">👥 人物介紹</a>
+    <a href="#home" class="nav-item">👥 人物相簿</a>
     
     <div class="nav-group-label">CHAPTERS</div>
     <a href="#ch1" class="nav-item">📄 測試－第一章</a>
     <a href="#ch2" class="nav-item">📄 測試－第二章</a>
-    <a href="#ch3" class="nav-item">📄 測試－第三章</a> </nav>
+    <a href="#ch3" class="nav-item">📄 測試－第三章</a>
+</nav>
 
 <main class="main-content">
     <div class="content-container">
         
         <section id="home" class="chapter-section">
-            <img src="https://images.unsplash.com/photo-1464802686167-b939a67e06a1?auto=format&fit=crop&w=1200&q=80" class="header-img">
-            <h1>人物介紹</h1>
+            <img src="https://images.unsplash.com/photo-1464802686167-b939a67e06a1?auto=format&fit=crop&w=1200&q=80" class="header-img" alt="封面">
+            <h1>人物相簿</h1>
+            <p>點擊下方卡片查看角色，點擊左側目錄閱讀旅程。</p>
+
             <div class="intro-grid">
                 <div class="char-card">
                     <img src="images/印提(微笑).png" class="char-avatar" alt="印提">
                     <div class="char-info">
                         <h3>印提</h3>
-                        <p>這裡是印提的介紹文字。您可以描述他的性格、背景或是他在故事中的定位。</p>
+                        <p>這裡是印提的介紹文字。您可以描述他的性格特點或是在故事中的定位。</p>
                     </div>
                 </div>
+
                 <div class="char-card">
-                    <div class="char-avatar" style="background:#ccc; display:flex; align-items:center; justify-content:center; font-size: 40px; color: white;">?</div>
+                    <div class="char-avatar" style="background:#ddd; display:flex; align-items:center; justify-content:center; font-size: 50px; color: white;">?</div>
                     <div class="char-info">
                         <h3>塔維克</h3>
-                        <p>這裡是塔維克的介紹文字。您可以點擊 GitHub 編輯器來修改這段內容。</p>
+                        <p>這裡是塔維克的介紹文字。您可以上傳新相片到 images 資料夾來替換這裡。</p>
                     </div>
                 </div>
             </div>
@@ -174,17 +203,23 @@
 
         <article id="ch1" class="chapter-section">
             <h2>1. 第一章標題</h2>
-            <div class="novel-text">這裡是第一章的內容。</div>
+            <div class="novel-text">
+                這裡是第一章的內容。
+            </div>
         </article>
 
         <article id="ch2" class="chapter-section">
             <h2>2. 這是第二章的標題</h2>
-            <div class="novel-text">這裡寫下第二章的故事內容...</div>
+            <div class="novel-text">
+                這裡寫下第二章的故事內容...
+            </div>
         </article>
 
         <article id="ch3" class="chapter-section">
             <h2>3. 這是第三章的標題</h2>
-            <div class="novel-text">這裡寫下第三章的故事內容...</div>
+            <div class="novel-text">
+                這裡寫下第三章的故事內容...
+            </div>
         </article>
 
     </div>
