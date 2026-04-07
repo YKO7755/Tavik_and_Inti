@@ -24,7 +24,6 @@
             color: var(--notion-text);
         }
 
-        /* 左側側邊欄 */
         .sidebar {
             width: 260px;
             background-color: var(--sidebar-bg);
@@ -64,7 +63,6 @@
 
         .nav-item:hover { background-color: #efefee; }
 
-        /* 右側主要內容區 */
         .main-content {
             flex: 1;
             overflow-y: auto;
@@ -73,60 +71,39 @@
         }
 
         .content-container {
-            max-width: 800px;
+            max-width: 720px;
             margin: 0 auto;
         }
 
-        /* --- 人物相簿卡片設計 --- */
+        /* --- 人物介紹放大版 --- */
         .intro-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
             margin-top: 30px;
         }
 
         .char-card {
             background: var(--card-bg);
-            border-radius: 16px;
-            overflow: hidden;
+            border-radius: 12px;
+            padding: 30px;
             display: flex;
-            flex-direction: column;
-            transition: all 0.3s ease;
-            border: 1px solid var(--notion-border);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .char-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
-        }
-
-        .char-avatar {
-            width: 100%;
-            height: 320px; /* 增加高度讓照片更大 */
-            object-fit: cover;
-            background: #eee;
-        }
-
-        .char-info {
-            padding: 20px;
+            flex-direction: column; /* 改為上下排列 */
+            gap: 20px;
+            align-items: center; /* 居中 */
             text-align: center;
         }
 
-        .char-info h3 { 
-            margin: 0 0 10px 0; 
-            font-size: 1.3em;
-            font-weight: bold;
+        .char-avatar {
+            width: 150px; /* 圖片放大到 150px */
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #eee;
+            border: 3px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .char-info p { 
-            margin: 0; 
-            font-size: 0.9em; 
-            color: #666; 
-            line-height: 1.6; 
-        }
-
-        /* 文章段落樣式 */
         .chapter-section {
             padding-top: 60px;
             margin-bottom: 80px;
@@ -142,19 +119,17 @@
 
         .header-img {
             width: 100%;
-            height: 250px;
+            height: 240px;
             object-fit: cover;
             border-radius: 12px;
             margin-bottom: 30px;
         }
 
-        h1 { font-size: 2.2em; margin-bottom: 10px; }
         h2 { border-bottom: 1px solid var(--notion-border); padding-bottom: 15px; }
 
         @media (max-width: 768px) {
             body { flex-direction: column; overflow: auto; }
             .sidebar { width: 100%; height: auto; border-right: none; }
-            .main-content { padding: 20px; }
         }
     </style>
 </head>
@@ -169,31 +144,27 @@
     <div class="nav-group-label">CHAPTERS</div>
     <a href="#ch1" class="nav-item">📄 測試－第一章</a>
     <a href="#ch2" class="nav-item">📄 測試－第二章</a>
-    <a href="#ch3" class="nav-item">📄 測試－第三章</a>
-</nav>
+    <a href="#ch3" class="nav-item">📄 測試－第三章</a> </nav>
 
 <main class="main-content">
     <div class="content-container">
         
         <section id="home" class="chapter-section">
             <img src="https://images.unsplash.com/photo-1464802686167-b939a67e06a1?auto=format&fit=crop&w=1200&q=80" class="header-img">
-            <h1>人物相簿</h1>
-            <p>點擊下方卡片可查看角色細節，點擊左側目錄即可開始閱讀旅程。</p>
-
+            <h1>人物介紹</h1>
             <div class="intro-grid">
                 <div class="char-card">
                     <img src="images/印提(微笑).png" class="char-avatar" alt="印提">
                     <div class="char-info">
                         <h3>印提</h3>
-                        <p>這裡是關於印提的簡短描述。您可以描述他的性格特點或是一句代表性的台詞。</p>
+                        <p>這裡是印提的介紹文字。您可以描述他的性格、背景或是他在故事中的定位。</p>
                     </div>
                 </div>
-
                 <div class="char-card">
-                    <div class="char-avatar" style="background:#ddd; display:flex; align-items:center; justify-content:center; font-size: 50px; color: white;">?</div>
+                    <div class="char-avatar" style="background:#ccc; display:flex; align-items:center; justify-content:center; font-size: 40px; color: white;">?</div>
                     <div class="char-info">
                         <h3>塔維克</h3>
-                        <p>這裡是關於塔維克的描述。上傳照片後，記得修改這裡的圖片路徑喔！</p>
+                        <p>這裡是塔維克的介紹文字。您可以點擊 GitHub 編輯器來修改這段內容。</p>
                     </div>
                 </div>
             </div>
