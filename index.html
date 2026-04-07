@@ -11,8 +11,6 @@
             --notion-text: #37352f;
             --notion-border: #edeef0;
             --sidebar-bg: #fbfbfa;
-            --tag-cp-bg: #e8deee;
-            --tag-cp-text: #6940a5;
             --card-bg: #f7f7f5;
         }
 
@@ -26,7 +24,6 @@
             color: var(--notion-text);
         }
 
-        /* 左側側邊欄 */
         .sidebar {
             width: 260px;
             background-color: var(--sidebar-bg);
@@ -66,7 +63,6 @@
 
         .nav-item:hover { background-color: #efefee; }
 
-        /* 右側內容區 */
         .main-content {
             flex: 1;
             overflow-y: auto;
@@ -79,38 +75,37 @@
             margin: 0 auto;
         }
 
-        /* 人物介紹佈局 */
+        /* --- 人物介紹放大版 --- */
         .intro-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
             margin-top: 30px;
         }
 
         .char-card {
             background: var(--card-bg);
             border-radius: 12px;
-            padding: 20px;
+            padding: 30px;
             display: flex;
+            flex-direction: column; /* 改為上下排列 */
             gap: 20px;
-            align-items: center;
+            align-items: center; /* 居中 */
+            text-align: center;
         }
 
         .char-avatar {
-            width: 100px;
-            height: 100px;
+            width: 150px; /* 圖片放大到 150px */
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
             background: #eee;
-            flex-shrink: 0;
+            border: 3px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .char-info h3 { margin: 0 0 8px 0; }
-        .char-info p { margin: 0; font-size: 0.95em; line-height: 1.6; }
-
-        /* 文章段落樣式 */
         .chapter-section {
-            padding-top: 40px;
+            padding-top: 60px;
             margin-bottom: 80px;
             min-height: 100vh;
         }
@@ -135,7 +130,6 @@
         @media (max-width: 768px) {
             body { flex-direction: column; overflow: auto; }
             .sidebar { width: 100%; height: auto; border-right: none; }
-            .main-content { overflow: visible; }
         }
     </style>
 </head>
@@ -150,8 +144,7 @@
     <div class="nav-group-label">CHAPTERS</div>
     <a href="#ch1" class="nav-item">📄 測試－第一章</a>
     <a href="#ch2" class="nav-item">📄 測試－第二章</a>
-    <a href="#ch2" class="nav-item">📄 測試－第三章</a>
-</nav>
+    <a href="#ch3" class="nav-item">📄 測試－第三章</a> </nav>
 
 <main class="main-content">
     <div class="content-container">
@@ -164,14 +157,14 @@
                     <img src="images/印提(微笑).png" class="char-avatar" alt="印提">
                     <div class="char-info">
                         <h3>印提</h3>
-                        <p>這裡是印提的介紹文字。你可以描述他的性格、背景或是他在故事中的定位。</p>
+                        <p>這裡是印提的介紹文字。您可以描述他的性格、背景或是他在故事中的定位。</p>
                     </div>
                 </div>
                 <div class="char-card">
-                    <div class="char-avatar" style="background:#ccc; display:flex; align-items:center; justify-content:center;">?</div>
+                    <div class="char-avatar" style="background:#ccc; display:flex; align-items:center; justify-content:center; font-size: 40px; color: white;">?</div>
                     <div class="char-info">
                         <h3>塔維克</h3>
-                        <p>這裡是塔維克的介紹文字。你可以點擊 GitHub 編輯器來修改這段內容。</p>
+                        <p>這裡是塔維克的介紹文字。您可以點擊 GitHub 編輯器來修改這段內容。</p>
                     </div>
                 </div>
             </div>
@@ -181,25 +174,17 @@
 
         <article id="ch1" class="chapter-section">
             <h2>1. 第一章標題</h2>
-            <div class="novel-text">
-                這裡貼入第一章的文字內容。
-                
-                你可以在這裡繼續寫故事...
-            </div>
+            <div class="novel-text">這裡是第一章的內容。</div>
         </article>
 
-<article id="ch2" class="chapter-section">
+        <article id="ch2" class="chapter-section">
             <h2>2. 這是第二章的標題</h2>
-            <div class="novel-text">
-               這裡寫下第二章的故事內容...
-            </div>
-	</article>
+            <div class="novel-text">這裡寫下第二章的故事內容...</div>
+        </article>
 
-<hr> <article id="ch3" class="chapter-section">
+        <article id="ch3" class="chapter-section">
             <h2>3. 這是第三章的標題</h2>
-            <div class="novel-text">
-                這裡寫下第三章的故事內容...
-            </div>
+            <div class="novel-text">這裡寫下第三章的故事內容...</div>
         </article>
 
     </div>
