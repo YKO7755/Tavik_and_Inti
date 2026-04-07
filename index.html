@@ -13,19 +13,20 @@
             --sidebar-bg: #fbfbfa;
             --tag-cp-bg: #e8deee;
             --tag-cp-text: #6940a5;
+            --card-bg: #f7f7f5;
         }
 
         body {
             font-family: 'Noto Sans TC', sans-serif;
             margin: 0;
-            display: flex; /* 讓整個頁面變左右並排 */
-            height: 100vh; /* 鎖定高度為螢幕高度 */
+            display: flex;
+            height: 100vh;
             overflow: hidden;
         }
 
         /* 左側側邊欄 */
         .sidebar {
-            width: 300px;
+            width: 280px;
             background-color: var(--sidebar-bg);
             border-right: 1px solid var(--notion-border);
             display: flex;
@@ -37,140 +38,94 @@
         .sidebar-title {
             font-size: 1.2em;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             padding-left: 10px;
+            cursor: pointer;
         }
 
-        /* 側邊欄按鈕樣式 */
+        .sidebar-title a { text-decoration: none; color: var(--notion-text); }
+
+        .nav-group-label {
+            font-size: 12px;
+            color: rgba(55, 53, 47, 0.5);
+            margin: 15px 0 5px 10px;
+            text-transform: uppercase;
+        }
+
         .nav-item {
             text-decoration: none;
             color: var(--notion-text);
-            padding: 10px;
+            padding: 8px 12px;
             border-radius: 5px;
-            margin-bottom: 5px;
+            margin-bottom: 2px;
             font-size: 14px;
             display: block;
             transition: background 0.2s;
         }
 
-        .nav-item:hover {
-            background-color: #efefee;
-        }
+        .nav-item:hover { background-color: #efefee; }
 
         /* 右側主要內容區 */
         .main-content {
-            flex: 1; /* 佔滿剩餘寬度 */
-            overflow-y: auto; /* 內容過長時出現捲軸 */
-            padding: 40px;
-            scroll-behavior: smooth; /* 捲動時有平滑感 */
+            flex: 1;
+            overflow-y: auto;
+            padding: 40px 20px;
+            scroll-behavior: smooth;
         }
 
         .content-container {
-            max-width: 750px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        .header-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 30px;
+        /* 人物介紹卡片設計 */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
         }
 
-        /* 小說章節區塊 */
+        .char-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .char-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #ddd;
+        }
+
+        .char-info h3 { margin: 0 0 5px 0; font-size: 1.1em; }
+        .char-info p { margin: 0; font-size: 0.9em; color: #666; line-height: 1.4; }
+
+        /* 章節區域 */
         .chapter-section {
-            padding-top: 20px;
-            margin-bottom: 100px; /* 增加章節間距，讓跳轉更有感 */
-            min-height: 80vh; /* 確保每個章節都有一定高度 */
+            padding-top: 60px;
+            margin-bottom: 100px;
+            min-height: 90vh;
         }
 
         .novel-text {
             font-family: 'Noto Serif TC', serif;
             font-size: 1.15em;
-            line-height: 1.8;
+            line-height: 1.9;
             white-space: pre-line;
+            color: #222;
         }
 
-        .tag {
-            font-size: 12px;
-            background: var(--tag-cp-bg);
-            color: var(--tag-cp-text);
-            padding: 2px 6px;
-            border-radius: 3px;
-            margin-left: 5px;
-        }
+        h1 { font-size: 2.5em; margin-bottom: 10px; }
+        h2 { border-bottom: 1px solid var(--notion-border); padding-bottom: 10px; margin-top: 0; }
 
-        .warning-box {
-            background-color: #f8f8f7;
-            border-left: 4px solid #f1c40f;
-            padding: 15px;
-            margin-bottom: 30px;
-            font-size: 0.9em;
-        }
-
-        hr { border: 0; border-top: 1px solid var(--notion-border); margin: 60px 0; }
-
-        /* 手機版適應：如果螢幕太窄就變回上下排列 */
-        @media (max-width: 768px) {
-            body { flex-direction: column; overflow: auto; }
-            .sidebar { width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--notion-border); }
-            .main-content { height: auto; }
-        }
-    </style>
-</head>
-<body>
-
-<nav class="sidebar">
-    <div class="sidebar-title">🍰 卿卿我我</div>
-    <a href="#ch1" class="nav-item">📄 測試－第一章 <span class="tag">塔維克</span></a>
-    <a href="#ch2" class="nav-item">📄 測試－第二章 <span class="tag">塔維克</span></a>
-    <a href="#ch3" class="nav-item">📄 測試－第三章 <span class="tag">塔維克</span></a>
-</nav>
-
-<main class="main-content">
-    <div class="content-container">
-        <img src="https://images.unsplash.com/photo-1464802686167-b939a67e06a1?auto=format&fit=crop&w=1200&q=80" class="header-img">
-
-        <article class="chapter-section" id="ch1">
-            <h2>1. Up all night</h2>
-            <div class="warning-box">⚠️ 第一章警語：這裡寫你的警語內容。</div>
-            <div class="novel-text">
-                你醒來時，發現自己正倒臥在廢土上。
-                黏稠、帶有金屬味的泥土黏著你的臉頰。天色混濁，隱約能見奇特的飛行物……
-                
-                <img src="images/印提(微笑).png" style="width:100%; border-radius:4px; margin: 20px 0;">
-                
-                身下是濕軟的苔蘚與粗糙泥土交織的觸感...
-            </div>
-        </article>
-
-        <hr>
-
-        <article class="chapter-section" id="ch2">
-            <h2>2. 第二章標題</h2>
-            <div class="warning-box">⚠️ 第二章警語：這裡寫第二章的提醒。</div>
-            <div class="novel-text">
-                這是第二章的內容。
-                當你點擊左側目錄的「第二章」時，頁面會自動滑動到這裡。
-                
-                你可以繼續在這裡寫下你的故事。
-            </div>
-        </article>
-
-        <hr>
-
-        <article class="chapter-section" id="ch3">
-            <h2>3. 第三章標題</h2>
-            <div class="novel-text">
-                這是第三章的內容。
-                
-                以此類推，你可以無限增加章節。
-            </div>
-        </article>
-
-    </div>
-</main>
-
-</body>
-</html>
+        .header-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 1
