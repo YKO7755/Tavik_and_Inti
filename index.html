@@ -71,14 +71,33 @@
         }
 
         .content-container {
-            max-width: 800px; /* 增加一點寬度，讓大圖卡片排起來更好看 */
+            max-width: 800px;
             margin: 0 auto;
+        }
+
+        /* --- 橫幅標題區 (取代原本的圖片) --- */
+        .header-text-area {
+            padding: 60px 0 40px 0;
+            border-bottom: 1px solid var(--notion-border);
+            margin-bottom: 40px;
+        }
+
+        .header-text-area h1 {
+            font-size: 2.8em;
+            margin: 0;
+            font-family: 'Noto Serif TC', serif;
+        }
+
+        .header-text-area p {
+            color: #666;
+            margin-top: 10px;
+            font-size: 1.1em;
         }
 
         /* --- 人物介紹（大圖卡片版） --- */
         .intro-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 自動適應卡片寬度 */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
             margin-top: 30px;
         }
@@ -86,29 +105,29 @@
         .char-card {
             background: var(--card-bg);
             border-radius: 12px;
-            overflow: hidden; /* 確保圓角裁切到圖片 */
+            overflow: hidden;
             display: flex;
-            flex-direction: column; /* 上下排列 */
+            flex-direction: column;
             gap: 20px;
-            text-align: center; /* 文字置中 */
+            text-align: center;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* 加點陰影增加質感 */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
         .char-card:hover {
-            transform: translateY(-5px); /* 懸停時浮起效果 */
+            transform: translateY(-5px);
             box-shadow: 0 8px 15px rgba(0,0,0,0.1);
         }
 
         .char-avatar {
-            width: 100%; /* 填滿卡片寬度 */
-            height: 350px; /* 【關鍵】設定一個較高的高度，形成大正方形感覺 */
-            object-fit: cover; /* 自動裁切不變形 */
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
             background: #eee;
         }
 
         .char-info {
-            padding: 0 25px 25px 25px; /* 圖片下方留白，文字用 padding */
+            padding: 0 25px 25px 25px;
         }
 
         .char-info h3 { margin: 0 0 10px 0; font-size: 1.3em; }
@@ -151,14 +170,6 @@
             white-space: pre-line;
         }
 
-        .header-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 30px;
-        }
-
         h2 { border-bottom: 1px solid var(--notion-border); padding-bottom: 15px; margin-top: 40px; }
 
         @media (max-width: 768px) {
@@ -186,8 +197,10 @@
     <div class="content-container">
         
         <section id="home" class="chapter-section">
-            <img src="https://images.unsplash.com/photo-1464802686167-b939a67e06a1?auto=format&fit=crop&w=1200&q=80" class="header-img">
-            <h1>人物介紹</h1>
+            <div class="header-text-area">
+                <h1>卿卿我我</h1>
+                <p>在這裡介紹你的故事舞台與主要角色。</p>
+            </div>
             
             <div class="intro-grid">
                 <div class="char-card">
