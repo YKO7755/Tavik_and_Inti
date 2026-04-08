@@ -37,7 +37,6 @@
             flex-shrink: 0;
         }
 
-        /* 移除標題底線 */
         .sidebar-title a {
             text-decoration: none; 
             color: var(--notion-text);
@@ -54,7 +53,6 @@
             font-weight: bold;
         }
 
-        /* 移除所有導覽項目底線 */
         .nav-item {
             text-decoration: none; 
             color: var(--notion-text);
@@ -63,6 +61,7 @@
             margin-bottom: 2px;
             font-size: 14px;
             display: block;
+            cursor: pointer;
         }
 
         .nav-item:hover { background-color: #efefee; }
@@ -90,6 +89,44 @@
 
         h2 { font-size: 1.8em; margin-top: 40px; }
 
+        /* --- 浮動視窗 (Modal) CSS --- */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            margin: 5% auto;
+            width: 85%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .modal-content img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
         @media (max-width: 768px) {
             body { flex-direction: column; overflow: auto; }
             .sidebar { width: 100%; height: auto; border-right: none; }
@@ -110,7 +147,7 @@
     <a href="chapter3.html" class="nav-item">📄 測試－第三章</a>
 
     <div class="nav-group-label">ALBUM</div>
-    <a href="chapter1PHTO.html" class="nav-item">📷 章節CG</a>
+    <a href="javascript:void(0)" class="nav-item" onclick="openModal()">📷章節CG</a>
 </nav>
 
 <main class="main-content">
@@ -122,6 +159,33 @@
         </article>
     </div>
 </main>
+
+<div id="imageModal" class="modal">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+        <img src="images/cg1.png" alt="章節CG 1">
+        <img src="images/cg2.png" alt="章節CG 2">
+        <p style="color: #ccc; text-align: center; font-size: 14px;">點擊背景或右上角叉叉可關閉</p>
+    </div>
+</div>
+
+<script>
+    function openModal() {
+        document.getElementById("imageModal").style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById("imageModal").style.display = "none";
+    }
+
+    // 點擊視窗背景也可以關閉
+    window.onclick = function(event) {
+        let modal = document.getElementById("imageModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 
 </body>
 </html>
