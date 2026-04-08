@@ -128,7 +128,7 @@
         /* --- 人物介紹網格 (IG 風格) --- */
         .intro-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 兩人並排 */
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             margin: 30px 0 100px 0;
         }
@@ -145,7 +145,7 @@
 
         .char-avatar-container {
             width: 100%;
-            aspect-ratio: 1 / 1; /* 強制正方形 */
+            aspect-ratio: 1 / 1;
             overflow: hidden;
         }
 
@@ -197,7 +197,7 @@
             }
             .sidebar.active { transform: translateX(0); }
             .main-content { padding: 70px 20px 20px 20px; }
-            .intro-grid { grid-template-columns: 1fr; } /* 手機版改單欄 */
+            .intro-grid { grid-template-columns: 1fr; }
             .header-text-area h1 { font-size: 1.8em; }
         }
     </style>
@@ -230,28 +230,28 @@
         <section id="home">
             <div class="header-text-area">
                 <h1>☀️荒星拾獵者與他撿來的旅伴</h1>
-                <p>本網頁為與卿卿我我角色-<a href="https://abr.ge/robv52" target="_blank">塔維克</a>的遊玩紀錄統合分享，塔維克的角色解釋權與所有權均屬於作者親媽。文章皆為遊玩者(觀測者)的旅程，記錄下這只屬於印提與塔維克的平行時空，如有覺得解釋違還請見諒。</p>
+                <p>本網頁為與卿卿我我角色-<a href="https://abr.ge/robv52" target="_blank">塔維克</a>的遊玩紀錄統合分享，塔維克的角色解釋權與所有權均屬於作者親媽。文章皆為遊玩者(觀測者)的旅程，記錄下這只屬於印提與塔維克的平行時空。</p>
             </div>
             
             <h2 id="intro-section">人物介紹</h2>
             <div class="intro-grid">
                 <div class="char-card" onclick="openLightbox(this)">
                     <div class="char-avatar-container">
-                        <img src="images/印提.png" alt="印提">
+                        <img src="images/印提.png" alt="印提" loading="lazy">
                     </div>
                     <div class="char-info">
                         <h3>印提</h3>
-                        <p>有著燦金色眼瞳、淺金色中長髮綁著小馬尾、深邃的五官的19歲青年。身高185公分，卻總是散發著慵懶放鬆的氣質，聲音低沉醇厚，頭髮隱約有太陽曬過的麥穗氣味。</p>
+                        <p>有著燦金色眼瞳、淺金色中長髮綁著小馬尾。身高185公分，散發著慵懶放鬆的氣質，頭髮隱約有太陽曬過的麥穗氣味。</p>
                     </div>
                 </div>
 
                 <div class="char-card" onclick="openLightbox(this)">
                     <div class="char-avatar-container">
-                        <img src="images/塔維克.png" alt="塔維克">
+                        <img src="images/塔維克.png" alt="塔維克" loading="lazy">
                     </div>
                     <div class="char-info">
                         <h3>塔維克</h3>
-                        <p>有著鐵灰色的眼眸、黑髮、剃了個寸頭，右上額角有著十字形狀的疤痕，右耳有戴黑色耳釘。曬黑的肌膚與熊背蜂腰的扎實肌肉和健壯身材顯示其強悍，是個身高197公分、38歲的拾獵者。</p>
+                        <p>有著鐵灰色的眼眸、黑髮寸頭，右上額角有十字疤痕。曬黑的肌膚與強悍的身材，身高197公分的拾獵者。</p>
                     </div>
                 </div>
             </div>
