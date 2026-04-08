@@ -34,6 +34,15 @@
 	.dialogue {
  	   color: #ffffff;
 	}
+	.chapter-nav {
+	    display: flex;
+	    justify-content: space-between; /* 讓三個連結分別靠左、靠中、靠右 */
+	    align-items: center;
+	    max-width: 680px;      /* 跟內文同寬 */
+	    margin: 60px auto 0;   /* 置中，並與上方內文保持距離 */
+	    padding-top: 20px;
+	    border-top: 1px solid var(--notion-border);
+	}
 
 	/* 禁用狀態的樣式 */
 	.nav-item.disabled, .extra-link-item.disabled {
@@ -359,10 +368,10 @@
 <span class="dialogue">「你從哪來？」</span>
 
 </div> <div class="chapter-nav">
-                <a href="index.html" class="nav-prev">← 回首頁</a> <a href="index.html" class="nav-home">回目錄</a>
-                <a href="chapter2.html" class="nav-next">去02 →</a>
-            </div>
-
+    <a href="index.html" class="nav-prev">← 上一篇</a>
+    <a href="index.html" class="nav-home">回目錄</a>
+    <a href="chapter2.html" class="nav-next">下一篇 →</a>
+</div>
         </article>
     </div>
 </main>
