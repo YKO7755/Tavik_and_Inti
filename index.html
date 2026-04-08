@@ -96,6 +96,33 @@
             font-size: 14px;
             display: block;
         }
+	/* 移除預設的小三角形 */
+	.nav-toggle-group summary::-webkit-details-marker {
+	    display: none;
+	}
+	.nav-toggle-group summary {
+	    list-style: none;
+	    cursor: pointer;
+	    outline: none;
+	    user-select: none;
+	}
+
+	/* 摺疊選單內部的縮排 */
+	.nav-toggle-content {
+	    padding-left: 15px; /* 讓子章節稍微縮排，視覺上更有階層感 */
+	    border-left: 1px solid var(--notion-border); /* 加一條細線線引導視覺 */
+	    margin-left: 10px;
+	}
+
+	/* 控制「尚未展開」時的文字顏色微調（可選） */
+	.nav-toggle-group:not([open]) summary {
+	    color: rgba(227, 227, 227, 0.7);
+	}
+
+	/* 滑鼠移上去的顏色變化 */
+	.nav-toggle-group summary:hover {
+	    background-color: #2c2c2c;
+	}
 
         .nav-item:hover { background-color: #2c2c2c; }
 
@@ -225,9 +252,14 @@
     <div class="nav-group-label">ABOUT</div>
     <a href="#intro-section" class="nav-item" onclick="closeSidebar()">👬 人物介紹</a>
     <div class="nav-group-label">CHAPTERS</div>
-    <a href="chapter1.html" class="nav-item">📘 01：倒臥廢土</a>
-    <a href="chapter2.html" class="nav-item">📘 02：異鄉人</a>
-    <a href="javascript:void(0)" class="nav-item disabled">📘 03：澤洛瓦(尚未開放)</a>
+    <details class="nav-toggle-group" open>
+        <summary class="nav-item">📚 第一章</summary>
+    <div class="nav-toggle-content">
+        <a href="chapter1.html" class="nav-item">📘 01：倒臥廢土</a>
+        <a href="chapter2.html" class="nav-item">📘 02：異鄉人</a>
+        <a href="javascript:void(0)" class="nav-item disabled">📘 03：澤洛瓦(尚未開放)</a>
+    </div>
+</details>
     <div class="nav-group-label">EXTRAS</div>
     <a href="CELEBRATION.html" class="nav-item">🎈 節慶區</a>
     <a href="SPELL.html" class="nav-item">🔮 咒語區</a>
