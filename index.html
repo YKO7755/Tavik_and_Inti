@@ -103,10 +103,12 @@
 	.nav-toggle-group summary {
 	    list-style: none;
 	    cursor: pointer;
-	    outline: none;
-	    user-select: none;
+	    display: flex;
+	    justify-content: space-between;
+	    align-items: center;
+	    color: var(--notion-text); /* 亮色 */
+	    opacity: 1;
 	}
-
 	/* 摺疊選單內部的縮排 */
 	.nav-toggle-content {
 	    padding-left: 15px; /* 讓子章節稍微縮排，視覺上更有階層感 */
@@ -116,7 +118,7 @@
 
 	/* 控制「尚未展開」時的文字顏色微調（可選） */
 	.nav-toggle-group:not([open]) summary {
-	    color: rgba(227, 227, 227, 0.7);
+	color: rgba(227, 227, 227, 0.5); /* 變暗，亮度約 50% */
 	}
 
 	/* 滑鼠移上去的顏色變化 */
