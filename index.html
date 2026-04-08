@@ -26,6 +26,16 @@
             color: var(--notion-text);
         }
 
+	/* 禁用狀態的樣式 */
+	.nav-item.disabled, .extra-link-item.disabled {
+	   color: #666 !important;       /* 變灰字 */
+	   text-decoration: line-through; /* 畫上刪除線 */
+	   pointer-events: none;         /* 鎖死點擊功能，讓滑鼠點不到 */
+	   cursor: not-allowed;          /* 滑鼠移上去顯示禁止符號 */
+	    opacity: 0.6;                 /* 增加透明度，看起來更「封印」 */
+	    border-left-color: #444 !important; /* 如果有左邊框，也變暗 */
+	}
+
         /* --- 手機版頂部列 --- */
         .mobile-header {
             display: none;
@@ -217,7 +227,7 @@
     <div class="nav-group-label">CHAPTERS</div>
     <a href="chapter1.html" class="nav-item">📘 第01章：倒臥廢土</a>
     <a href="chapter2.html" class="nav-item">📘 第02章：風砂之夜</a>
-    <a href="chapter3.html" class="nav-item">📘 第03章：黎明時分</a>
+    <a href="javascript:void(0)" class="nav-item disabled">📘 第03章：黎明時分</a>
     <div class="nav-group-label">EXTRAS</div>
     <a href="CELEBRATION.html" class="nav-item">🎈 節慶區</a>
     <a href="SPELL.html" class="nav-item">🔮 咒語區</a>
