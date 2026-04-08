@@ -25,7 +25,7 @@
             color: var(--notion-text);
         }
 
-        /* --- 手機版頂部列 (僅手機顯示) --- */
+        /* --- 手機版頂部列 --- */
         .mobile-header {
             display: none;
             position: fixed;
@@ -107,7 +107,7 @@
         .novel-text {
             font-family: 'Noto Serif TC', serif;
             font-size: 1.2em;
-            line-height: 2.2; /* 百萬字建議行高拉大，閱讀才舒服 */
+            line-height: 2.2;
             white-space: pre-line;
             color: var(--notion-text);
             letter-spacing: 0.03em;
@@ -120,7 +120,7 @@
             padding-bottom: 15px;
         }
 
-        /* --- IG風格 CG 網格 --- */
+        /* --- CG 網格牆 Modal (IG風格) --- */
         .modal {
             display: none; 
             position: fixed;
@@ -128,6 +128,7 @@
             left: 0; top: 0; width: 100%; height: 100%;
             background-color: rgba(0,0,0,0.9);
             overflow-y: auto;
+            padding-bottom: 50px;
         }
 
         .modal-content {
@@ -145,6 +146,12 @@
             overflow: hidden;
             border-radius: 4px;
             background: #222;
+            cursor: pointer; /* 滑鼠移上去變手指 */
+            transition: transform 0.2s;
+        }
+
+        .modal-item:hover {
+            transform: scale(1.03); /* 滑鼠移上去稍微放大 */
         }
 
         .modal-item img {
@@ -156,7 +163,8 @@
             color: #888;
             text-align: center;
             font-size: 13px;
-            margin-top: 20px;
+            margin-top: 30px;
+            font-family: sans-serif;
         }
 
         .close-btn {
@@ -166,33 +174,45 @@
             cursor: pointer; z-index: 10000;
         }
 
+        /* --- 大圖顯示視窗 (Lightbox) --- */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 20000; /* 確保在網格牆之上 */
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out; /* 點擊關閉 */
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+            /* 預設隱藏，載入完成後由 JS 顯示 */
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .lightbox.active .lightbox-content {
+            opacity: 1;
+        }
+
         /* --- 響應式修正 --- */
         @media (max-width: 768px) {
             body { flex-direction: column; }
-            
             .mobile-header { display: flex; }
-
             .sidebar {
                 position: fixed;
                 left: 0; top: 50px; bottom: 0;
                 z-index: 999;
-                transform: translateX(-100%); /* 預設隱藏在左側 */
-                box-shadow: 10px 0 20px rgba(0,0,0,0.5);
+                transform: translateX(-100%);
             }
-
-            /* 當選單開啟時的樣式 */
-            .sidebar.active {
-                transform: translateX(0);
-            }
-
-            .main-content {
-                padding: 70px 20px 20px 20px; /* 為頂部留空間 */
-            }
-
-            .modal-content {
-                grid-template-columns: repeat(2, 1fr);
-                margin: 25% auto;
-            }
+            .sidebar.active { transform: translateX(0); }
+            .main-content { padding: 70px 20px 20px 20px; }
+            .modal-content { grid-template-columns: repeat(2, 1fr); margin: 25% auto; }
             .modal-footer-text { grid-column: span 2; }
         }
     </style>
@@ -202,18 +222,19 @@
 <header class="mobile-header">
     <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
     <div style="font-weight: bold; font-size: 14px;">🌻 旅程分享</div>
-    <div style="width: 24px;"></div> </header>
+    <div style="width: 24px;"></div>
+</header>
 
 <nav class="sidebar" id="sidebar">
     <div class="sidebar-title">
         <a href="index.html">🌻卿卿我我-旅程分享</a>
     </div>
-
     <div class="nav-group-label">CHAPTERS</div>
     <a href="chapter1.html" class="nav-item">📄 第 001 章：倒臥廢土</a>
-    <a href="#" class="nav-item">📄 第 002 章：後續章節...</a>
-    <a href="#" class="nav-item">📄 第 999 章：百萬字傳奇</a>
-
+    <div class="nav-group-label">CHAPTERS</div>
+    <a href="chapter1.htm2" class="nav-item">📄 第 002 章：風砂之夜</a>
+    <div class="nav-group-label">CHAPTERS</div>
+    <a href="chapter1.htm3" class="nav-item">📄 第 003 章：黎明時分</a>
     <div class="nav-group-label">ALBUM</div>
     <a href="javascript:void(0)" class="nav-item" onclick="openModal(); closeSidebar();">📷 章節 CG 牆</a>
 </nav>
@@ -231,28 +252,59 @@
 <div id="imageModal" class="modal">
     <span class="close-btn" onclick="closeModal()">&times;</span>
     <div class="modal-content">
-        <div class="modal-item"><img src="images/印提(微笑).png" alt="CG 1"></div>
-        <div class="modal-item"><img src="images/大雨濕透.png" alt="CG 2"></div>
-        <div class="modal-item"><img src="images/印提(寵溺微笑).png" alt="CG 3"></div>
-        <p class="modal-footer-text">點擊背景或叉叉關閉</p>
+        <div class="modal-item" onclick="openLightbox(this)"><img src="images/cg1.png" alt="CG 1"></div>
+        <div class="modal-item" onclick="openLightbox(this)"><img src="images/cg2.png" alt="CG 2"></div>
+        <div class="modal-item" onclick="openLightbox(this)"><img src="images/cg3.png" alt="CG 3"></div>
+        
+        <p class="modal-footer-text">🌻 點擊圖片檢視大圖 | 點擊背景關閉網格牆</p>
     </div>
 </div>
 
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" class="lightbox-content" src="" alt="大圖檢視">
+</div>
+
 <script>
-    // 控制側邊欄開關
-    function toggleSidebar() {
-        document.getElementById("sidebar").classList.toggle("active");
-    }
+    // 側邊欄開關
+    function toggleSidebar() { document.getElementById("sidebar").classList.toggle("active"); }
+    function closeSidebar() { document.getElementById("sidebar").classList.remove("active"); }
 
-    // 關閉側邊欄 (點擊內容區時自動關閉)
-    function closeSidebar() {
-        document.getElementById("sidebar").classList.remove("active");
-    }
-
-    // Modal 控制
+    // 網格牆 Modal 控制
     function openModal() { document.getElementById("imageModal").style.display = "block"; }
     function closeModal() { document.getElementById("imageModal").style.display = "none"; }
 
+    // 💡 大圖視窗 (Lightbox) 控制
+    function openLightbox(element) {
+        // 1. 抓取被點擊容器內的圖片來源 (src)
+        const imgSrc = element.querySelector('img').src;
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+
+        // 2. 先將 lightbox 顯示出來，但內容透明 (CSS transition 會處理動畫)
+        lightbox.style.display = "flex";
+        
+        // 3. 當大圖載入完成後，再賦予 active 樣式 (顯示出來)
+        lightboxImg.onload = function() {
+            lightbox.classList.add('active');
+        };
+        
+        // 4. 設定大圖的來源
+        lightboxImg.src = imgSrc;
+    }
+
+    function closeLightbox() {
+        const lightbox = document.getElementById("lightbox");
+        // 移除 active 樣式，大圖變透明
+        lightbox.classList.remove('active');
+        // 等待 CSS 動畫結束後再隱藏 lightbox，避免圖片殘影
+        setTimeout(() => {
+            lightbox.style.display = "none";
+            // 清空 src，避免下次打開時先顯示舊圖
+            document.getElementById("lightbox-img").src = "";
+        }, 300);
+    }
+
+    // 點擊網格牆背景關閉 Modal
     window.onclick = function(event) {
         let modal = document.getElementById("imageModal");
         if (event.target == modal) { modal.style.display = "none"; }
