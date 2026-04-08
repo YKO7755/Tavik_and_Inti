@@ -135,13 +135,14 @@
             max-width: 680px;
             margin: 0 auto;
             white-space: pre-line;
+	    word-wrap: break-word;       /* 遇到太長的數字或英文會自動折行 */
+ 	   overflow-wrap: break-word;   /* 雙重保險，防止內容撐開容器 */
         }
 
         h2 { 
             font-size: 1.8em; 
             border-bottom: 1px solid var(--notion-border);
             padding-bottom: 15px;
-            /* 統一對齊設定 */
             max-width: 680px; 
             margin: 0 auto 20px auto; 
             text-align: left; 
