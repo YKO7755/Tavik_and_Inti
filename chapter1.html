@@ -8,11 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --notion-bg: #ffffff;
-            --notion-text: #37352f;
-            --notion-border: #edeef0;
-            --sidebar-bg: #fbfbfa;
-            --card-bg: #f7f7f5;
+            /* 切換為深色主題 */
+            --notion-bg: #191919;
+            --notion-text: #e3e3e3;
+            --notion-border: #2f2f2f;
+            --sidebar-bg: #121212;
+            --card-bg: #222222;
         }
 
         body {
@@ -48,7 +49,7 @@
 
         .nav-group-label {
             font-size: 11px;
-            color: rgba(55, 53, 47, 0.5);
+            color: rgba(227, 227, 227, 0.4); /* 調整標籤顏色透明度 */
             margin: 15px 0 5px 5px;
             font-weight: bold;
         }
@@ -64,7 +65,8 @@
             cursor: pointer;
         }
 
-        .nav-item:hover { background-color: #efefee; }
+        /* 調整懸停背景顏色 */
+        .nav-item:hover { background-color: #2c2c2c; }
 
         /* --- 主要內容區 --- */
         .main-content {
@@ -84,10 +86,15 @@
             font-size: 1.2em;
             line-height: 2;
             white-space: pre-line;
-            color: #222;
+            color: var(--notion-text); /* 跟隨主文字顏色 */
         }
 
-        h2 { font-size: 1.8em; margin-top: 40px; }
+        h2 { 
+            font-size: 1.8em; 
+            margin-top: 40px; 
+            border-bottom: 1px solid var(--notion-border);
+            padding-bottom: 15px;
+        }
 
         /* --- 浮動視窗 (Modal) CSS --- */
         .modal {
