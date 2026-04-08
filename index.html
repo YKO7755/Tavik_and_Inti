@@ -100,32 +100,30 @@
 	.nav-toggle-group summary::-webkit-details-marker {
 	    display: none;
 	}
-	.nav-toggle-group summary {
-	    list-style: none;
-	    cursor: pointer;
-	    display: flex;
-	    justify-content: space-between;
-	    align-items: center;
-	    color: var(--notion-text); /* 亮色 */
-	    opacity: 1;
-	}
+/* 1. 預設狀態（未展開）：亮色、不透明度 1 */
+.nav-toggle-group summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--notion-text); /* 使用你 root 定義的亮灰色 */
+    opacity: 1;
+}
 	/* 摺疊選單內部的縮排 */
 	.nav-toggle-content {
 	    padding-left: 15px; /* 讓子章節稍微縮排，視覺上更有階層感 */
 	    border-left: 1px solid var(--notion-border); /* 加一條細線線引導視覺 */
 	    margin-left: 10px;
 	}
-
-	/* 控制「尚未展開」時的文字顏色微調（可選） */
-	.nav-toggle-group:not([open]) summary {
-	color: rgba(227, 227, 227, 0.5); /* 變暗，亮度約 50% */
-	}
-
+/* 2. 展開狀態（當標籤有 [open] 時）：變暗 */
+.nav-toggle-group[open] summary {
+    color: rgba(227, 227, 227, 0.5); /* 展開後文字變為 50% 透明度 */
+}
 	/* 滑鼠移上去的顏色變化 */
 	.nav-toggle-group summary:hover {
 	    background-color: #2c2c2c;
 	}
-
         .nav-item:hover { background-color: #2c2c2c; }
 
         /* --- 主要內容區 --- */
