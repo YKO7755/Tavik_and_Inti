@@ -24,15 +24,28 @@
             background-color: var(--notion-bg);
             color: var(--notion-text);
         }
+        
+	/* 背景描述：灰字、稍微縮點透明度 */
+	.description {
+	    color: #999999; 
+ 	   font-weight: 400;
+	}
+
+	/* 正常對話：白字、字體加重一點點 */
+	.dialogue {
+ 	   color: #ffffff;
+  	  font-weight: 400;
+  	  padding-left: 10px;
+	}
 
 	/* 禁用狀態的樣式 */
 	.nav-item.disabled, .extra-link-item.disabled {
-	    color: #666 !important;       /* 變灰字 */
-	    text-decoration: line-through; /* 畫上刪除線 */
-	    pointer-events: none;         /* 鎖死點擊功能，讓滑鼠點不到 */
-	    cursor: not-allowed;          /* 滑鼠移上去顯示禁止符號 */
-	    opacity: 0.6;                 /* 增加透明度，看起來更「封印」 */
-	    border-left-color: #444 !important; /* 如果有左邊框，也變暗 */
+	    color: #666 !important;
+	    text-decoration: line-through;
+	    pointer-events: none;
+	    cursor: not-allowed;
+	    opacity: 0.6;
+	    border-left-color: #444 
 	}
 
         /* --- 手機版頂部列 --- */
@@ -112,12 +125,16 @@
         }
 
         .novel-text {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.2em;
-            line-height: 2.2;
+            font-family: 'Songti TC', serif;
+            font-size: 1.3em;
+            line-height: 1.8;
             white-space: pre-line;
-            color: var(--notion-text);
+	    color: #999999;
             letter-spacing: 0.03em;
+	    text-align: justify;
+	    max-width: 680px;
+    	    margin: 0 auto;
+	    white-space: pre-line;
         }
 
         h2 { 
