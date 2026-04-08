@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* 深色主題 */
             --notion-bg: #191919;
             --notion-text: #e3e3e3;
             --notion-border: #2f2f2f;
@@ -95,7 +94,7 @@
             padding-bottom: 15px;
         }
 
-        /* --- 浮動視窗 (Modal) CSS - 修訂為 IG 風格 --- */
+        /* --- 浮動視窗 (Modal) - IG 網格風格 --- */
         .modal {
             display: none; 
             position: fixed;
@@ -104,38 +103,47 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.9); /* 背景更暗一點 */
+            background-color: rgba(0,0,0,0.9);
             overflow-y: auto;
         }
 
         .modal-content {
-            margin: 5% auto;
+            margin: 10% auto;
             width: 90%;
-            /* 修改：限制最大寬度，讓它看起來像 IG 貼文牆，而不是充滿整個螢幕 */
-            max-width: 500px; 
-            display: flex;
-            flex-direction: column;
-            gap: 15px; /* 貼文之間的間距 */
+            max-width: 800px; /* 三欄寬度適中 */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 強制三欄 */
+            gap: 8px; /* 圖片間距 */
         }
 
-        /* 修改：讓圖片強制呈現 1:1 正方形 (IG 風格核心) */
         .modal-item {
             width: 100%;
-            aspect-ratio: 1 / 1; /* 強制 1:1 正方形 */
-            border-radius: 12px;
-            overflow: hidden; /* 隱藏裁切掉的部分 */
-            background-color: #222; /* 預設背景色 */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            background-color: #222;
+            border-radius: 4px;
         }
 
         .modal-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* 修正：裁切圖片以填滿正方形，不會變形 */
+            object-fit: cover; /* 裁切成正方形 */
+            transition: opacity 0.2s;
+        }
+
+        .modal-item img:hover { opacity: 0.8; }
+
+        .modal-footer-text {
+            grid-column: span 3; /* 橫跨三欄 */
+            color: #ccc;
+            text-align: center;
+            font-size: 13px;
+            margin-top: 20px;
+            font-family: sans-serif;
         }
 
         .close-btn {
-            position: absolute;
+            position: fixed; /* 固定在右上角 */
             top: 15px;
             right: 25px;
             color: #fff;
@@ -145,11 +153,12 @@
             z-index: 10000;
         }
 
-        @media (max-width: 768px) {
-            body { flex-direction: column; overflow: auto; }
-            .sidebar { width: 100%; height: auto; border-right: none; }
-            .main-content { padding: 20px; }
-            .modal-content { max-width: 90%; margin: 15% auto; } /* 手機板寬度增加 */
+        @media (max-width: 600px) {
+            .modal-content { 
+                grid-template-columns: repeat(2, 1fr); /* 手機板兩欄 */
+                margin: 20% auto;
+            }
+            .modal-footer-text { grid-column: span 2; }
         }
     </style>
 </head>
@@ -182,16 +191,11 @@
 <div id="imageModal" class="modal">
     <span class="close-btn" onclick="closeModal()">&times;</span>
     <div class="modal-content">
-        <div class="modal-item">
-            <img src="images/印提(微笑).png" alt="章節CG 1">
-        </div>
-        <div class="modal-item">
-            <img src="images/大雨濕透.png" alt="章節CG 2">
-        </div>
-        <div class="modal-item">
-            <img src="images/印提(寵溺微笑).png" alt="章節CG 3">
-        </div>
-        <p style="color: #ccc; text-align: center; font-size: 13px; margin-top: 20px; font-family: sans-serif;">🌻 點擊背景或叉叉關閉</p>
+        <div class="modal-item"><img src="images/印提(微笑).png" alt="CG 1"></div>
+        <div class="modal-item"><img src="images/大雨濕透.png" alt="CG 2"></div>
+        <div class="modal-item"><img src="images/印提(寵溺微笑).png" alt="CG 3"></div>
+        
+        <p class="modal-footer-text">🌻 點擊背景或叉叉關閉</p>
     </div>
 </div>
 
@@ -204,7 +208,6 @@
         document.getElementById("imageModal").style.display = "none";
     }
 
-    // 點擊視窗背景也可以關閉
     window.onclick = function(event) {
         let modal = document.getElementById("imageModal");
         if (event.target == modal) {
