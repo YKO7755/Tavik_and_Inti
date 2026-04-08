@@ -34,6 +34,22 @@
 	.dialogue {
  	   color: #ffffff;
 	}
+	.chapter-nav {
+	    display: flex;
+	    justify-content: space-between; /* 讓三個連結分別靠左、靠中、靠右 */
+	    align-items: center;
+	    max-width: 680px;      /* 跟內文同寬 */
+	    margin: 60px auto 0;   /* 置中，並與上方內文保持距離 */
+	    padding-top: 20px;
+	    border-top: 1px solid var(--notion-border);
+	}
+	/* 移除連結下劃線，並讓顏色稍微亮一點 */
+	.chapter-nav a {
+	    text-decoration: none !important;
+	    color: var(--accent-blue);
+	    font-size: 14px;
+	    transition: opacity 0.2s;
+	}
 
 	/* 禁用狀態的樣式 */
 	.nav-item.disabled, .extra-link-item.disabled {
@@ -135,9 +151,7 @@
 	    word-wrap: break-word;       /* 遇到太長的數字或英文會自動折行 */
  	   overflow-wrap: break-word;   /* 雙重保險，防止內容撐開容器 */
         }
-	html {
-  	  overflow-y: scroll;
-	}
+
         h2 { 
             font-size: 1.8em; 
             border-bottom: 1px solid var(--notion-border);
@@ -242,6 +256,40 @@
             .modal-content { grid-template-columns: repeat(2, 1fr); margin: 25% auto; }
             .modal-footer-text { grid-column: span 2; }
         }
+	* --- 前後章導航連結 --- */
+	chapter-nav {
+	   max-width: 680px;
+	   margin: 60px auto 0;
+	   padding-top: 20px;
+	   border-top: 1px solid var(--notion-border);
+	   display: flex;
+	   justify-content: space-between;
+	   align-items: center;
+	
+	chapter-nav a {
+	   color: var(--accent-blue);
+	   text-decoration: none;
+	   font-size: 14px;
+	   opacity: 0.8;
+	   transition: opacity 0.2s;
+	
+
+	chapter-nav a:hover {
+	   opacity: 1;
+	
+
+	* 讓尚未開放的章節變灰 */
+	chapter-nav a.disabled {
+	   color: #666;
+	   pointer-events: none;
+	   text-decoration: line-through;
+	   opacity: 0.6;
+	
+
+	nav-home {
+	   color: var(--notion-text) !important;
+	   font-weight: bold;
+	
     </style>
 </head>
 <body>
@@ -270,7 +318,12 @@
             <h2>03：澤洛瓦</h2>
             <div class="novel-text">
 測試：123456
-	</div>
+	</div> <div class="chapter-nav">
+    <a href="chapter2.html" class="nav-prev">← 上一篇</a>
+    <a href="index.html" class="nav-home">回目錄</a>
+    <a href="javascript:void(0)" class="nav-next">下一篇 →</a>
+</div>
+
         </article>
     </div>
 </main>
