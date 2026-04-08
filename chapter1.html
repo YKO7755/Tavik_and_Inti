@@ -78,89 +78,6 @@
             margin: 0 auto;
         }
 
-        /* --- 標題區域 --- */
-        .header-text-area {
-            padding: 5px 0 20px 0;
-            border-bottom: 1px solid var(--notion-border);
-            margin-bottom: 5px;
-        }
-
-        .header-text-area h1 {
-            font-size: 2.8em;
-            margin: 0;
-            font-family: 'Noto Serif TC', serif;
-            font-weight: 700;
-        }
-
-        .header-text-area p {
-            color: #666;
-            margin-top: 10px;
-            font-size: 1.1em;
-        }
-
-        /* --- 人物介紹卡片 --- */
-        .intro-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
-            margin-bottom: 100px; 
-        }
-
-        .char-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .char-avatar {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-            background: #eee;
-        }
-
-        .char-info {
-            padding: 0 25px 25px 25px;
-        }
-
-        .char-info h3 { margin: 0 0 10px 0; font-size: 1.3em; }
-        .char-info p { margin: 0; font-size: 0.95em; line-height: 1.6; color: #666; }
-
-        /* --- 小說內文與章節間距 --- */
-        .chapter-section {
-            padding-top: 80px; /* 點擊側邊欄跳轉後，標題距離頂部的位置 */
-            margin-bottom: 150px;
-        }
-
-        .novel-text {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.2em;
-            line-height: 2;
-            letter-spacing: 0.05em;
-            white-space: pre-line;
-            color: #222;
-        }
-
-        h2 { 
-            border-bottom: 1px solid var(--notion-border); 
-            padding-bottom: 15px; 
-            margin-top: 0; 
-            font-size: 1.8em;
-        }
-
-        hr {
-            border: none;
-            border-top: 1px solid var(--notion-border);
-            margin: 100px 0; /* 分隔線上下留白增加 */
-        }
-
         @media (max-width: 768px) {
             body { flex-direction: column; overflow: auto; }
             .sidebar { width: 100%; height: auto; border-right: none; }
@@ -171,11 +88,11 @@
 <body>
 
 <nav class="sidebar">
-    <div class="sidebar-title"><a href="#home">🌻卿卿我我-旅程分享</a></div>
+    <div class="index.html" class="nav-item"><a href="#home">🌻卿卿我我-旅程分享</a></div>
     <div class="nav-group-label">ABOUT</div>
-    <a href="#home" class="nav-item">👥 人物介紹</a>
+    <a href="sidebar-title"><a href="#home">👥 人物介紹</a>
     <div class="nav-group-label">CHAPTERS</div>
-    <a href="chapter1.html" class="nav-item">📄 測試－第一章</a>
+    <a href="chapter1.html" class="nav-item">📄 第一章：倒臥廢土</a>
     <a href="chapter2.html" class="nav-item">📄 測試－第二章</a>
     <a href="chapter3.html" class="nav-item">📄 測試－第三章</a>
 </nav>
@@ -184,12 +101,6 @@
     <div class="content-container">
         
         <section id="home" class="chapter-section">
-            <div class="header-text-area">
-                <h1>☀️荒星拾獵者與他撿來的旅伴</h1>
-                <p>本文章為與卿卿我我角色-<a href="https://abr.ge/robv52" target="_blank">塔維克</a>的遊玩紀錄統合分享，塔維克的角色解釋權與所有權均屬於作者親媽。作為遊玩者(觀測者)紀錄下這只屬於印提與塔維克的平行時空，如有覺得解釋違還請見諒。</p>
-            </div>
-            
-
         </section>
 
         <hr>
