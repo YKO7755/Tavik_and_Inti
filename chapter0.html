@@ -172,23 +172,25 @@
             padding-bottom: 50px;
         }
 
+        /* --- 針對單張或少數 CG 的優化佈局 --- */
         .modal-content {
-            margin: 10% auto;
+            margin: 5% auto; /* 減少上方留白，讓圖稍微往上一點 */
             width: 90%;
-            max-width: 800px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
+            max-width: 900px; /* 稍微放寬，讓單張大圖更有張力 */
+            display: flex;    /* 改用 flex 讓單張圖居中 */
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
         }
-
         .modal-item {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            overflow: hidden;
-            border-radius: 4px;
-            background: #222;
-            cursor: pointer; /* 滑鼠移上去變手指 */
-            transition: transform 0.2s;
+            width: auto;      /* 取消固定寬度 */
+            max-width: 100%;  /* 確保不超出螢幕 */
+            aspect-ratio: auto; /* 取消 1/1 強制正方形，還原圖片原比例 */
+            overflow: visible;  /* 讓圖片完整顯示 */
+            border-radius: 8px; /* 稍微加圓角，更有質感 */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* 增加陰影感 */
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .modal-item:hover {
@@ -196,18 +198,22 @@
         }
 
         .modal-item img {
-            width: 100%; height: 100%; object-fit: cover;
+            width: auto;
+            max-height: 70vh; /* 限制高度，避免單張圖太長超出螢幕 */
+            display: block;
+            border-radius: 8px;
+            object-fit: contain; /* 確保圖片不被裁切 */
         }
 
+        /* 底部文字調整 */
         .modal-footer-text {
-            grid-column: span 3;
+            width: 100%;
             color: #888;
             text-align: center;
-            font-size: 13px;
-            margin-top: 30px;
-            font-family: sans-serif;
+            font-size: 14px;
+            margin-top: 10px;
+            letter-spacing: 1px;
         }
-
         .close-btn {
             position: fixed;
             top: 15px; right: 25px;
