@@ -262,7 +262,18 @@
             .modal-content { grid-template-columns: repeat(2, 1fr); margin: 25% auto; }
             .modal-footer-text { grid-column: span 2; }
         }
-	* --- 前後章導航連結 --- */
+		/* --- 頁尾版權聲明 --- */
+	.site-footer {
+	    text-align: center;
+	    color: #666;
+	    font-size: 12px;
+	    line-height: 1.8;
+	    padding: 40px 0 20px 0;
+	    border-top: 1px solid var(--notion-border);
+	    margin-top: 40px;
+	    font-family: sans-serif;
+	}
+		/* --- 前後章導航連結 --- */
 	chapter-nav {
 	   max-width: 680px;
 	   margin: 60px auto 0;
@@ -329,9 +340,12 @@
     <a href="index.html" class="nav-home">回目錄</a>
     <a href="javascript:void(0)" class="nav-next">下一篇(尚未開放) →</a>
 </div>
-
         </article>
-    </div>
+<footer class="site-footer">
+    © 2026 [Yko]. All Rights Reserved.<br>
+    本站文字內容受著作權保護。插圖、CG 係由 AI 協作生成，若為非 AI 作品將另行特別備註。
+</footer>
+	</div>
 </main>
 
 <div id="imageModal" class="modal">
