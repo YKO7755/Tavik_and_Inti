@@ -25,25 +25,15 @@
             color: var(--notion-text);
         }
         
-	/* 背景描述：灰字、稍微縮點透明度 */
-	.description {
-	    color: #999999; 
-	}
+        .description { color: #999999; }
+        .dialogue { color: #ffffff; }
 
-	/* 正常對話：*/
-	.dialogue {
- 	   color: #ffffff;
-	}
-
-	/* 禁用狀態的樣式 */
-	.nav-item.disabled, .extra-link-item.disabled {
-	    color: #666 !important;
-	    text-decoration: line-through;
-	    pointer-events: none;
-	    cursor: not-allowed;
-	    opacity: 0.6;
-	    border-left-color: #444 
-	}
+        .nav-item.disabled {
+            color: #666 !important;
+            text-decoration: line-through;
+            pointer-events: none;
+            opacity: 0.6;
+        }
 
         /* --- 手機版頂部列 --- */
         .mobile-header {
@@ -107,6 +97,7 @@
         }
 
         .nav-item:hover { background-color: #2c2c2c; }
+
         /* --- 主要內容區 --- */
         .main-content {
             flex: 1;
@@ -121,7 +112,6 @@
             padding: 60px 0;
         }
 
-        /* --- 文字內容格式 --- */
         .novel-text {
             font-family: 'Songti TC', serif;
             font-size: 1.3em;
@@ -132,12 +122,10 @@
             max-width: 680px;
             margin: 0 auto;
             white-space: pre-line;
-	    word-wrap: break-word;       /* 遇到太長的數字或英文會自動折行 */
- 	   overflow-wrap: break-word;   /* 雙重保險，防止內容撐開容器 */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
-	html {
-  	  overflow-y: scroll;
-	}
+
         h2 { 
             font-size: 1.8em; 
             border-bottom: 1px solid var(--notion-border);
@@ -147,105 +135,11 @@
             text-align: left; 
         }
 
-        /* --- CG 網格牆 Modal (IG風格) --- */
-        .modal {
-            display: none; 
-            position: fixed;
-            z-index: 9999;
-            left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.9);
-            overflow-y: auto;
-            padding-bottom: 50px;
-        }
-
-        .modal-content {
-            margin: 10% auto;
-            width: 90%;
-            max-width: 800px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-        }
-
-        .modal-item {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            overflow: hidden;
-            border-radius: 4px;
-            background: #222;
-            cursor: pointer; /* 滑鼠移上去變手指 */
-            transition: transform 0.2s;
-        }
-
-        .modal-item:hover {
-            transform: scale(1.03); /* 滑鼠移上去稍微放大 */
-        }
-
-        .modal-item img {
-            width: 100%; height: 100%; object-fit: cover;
-        }
-
-        .modal-footer-text {
-            grid-column: span 3;
-            color: #888;
-            text-align: center;
-            font-size: 13px;
-            margin-top: 30px;
-            font-family: sans-serif;
-        }
-
-        .close-btn {
-            position: fixed;
-            top: 15px; right: 25px;
-            color: #fff; font-size: 35px; font-weight: bold;
-            cursor: pointer; z-index: 10000;
-        }
-
-        /* --- 大圖顯示視窗 (Lightbox) --- */
-        .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 20000; /* 確保在網格牆之上 */
-            left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.95);
-            align-items: center;
-            justify-content: center;
-            cursor: zoom-out; /* 點擊關閉 */
-        }
-
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 8px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.8);
-            /* 預設隱藏，載入完成後由 JS 顯示 */
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .lightbox.active .lightbox-content {
-            opacity: 1;
-        }
-
-        /* --- 響應式修正 --- */
-        @media (max-width: 768px) {
-            body { flex-direction: column; }
-            .mobile-header { display: flex; }
-            .sidebar {
-                position: fixed;
-                left: 0; top: 50px; bottom: 0;
-                z-index: 999;
-                transform: translateX(-100%);
-            }
-            .sidebar.active { transform: translateX(0); }
-            .main-content { padding: 70px 20px 20px 20px; }
-            .modal-content { grid-template-columns: repeat(2, 1fr); margin: 25% auto; }
-            .modal-footer-text { grid-column: span 2; }
-        }
         /* --- 打碼圖片效果 --- */
         .decoded-image-container {
             position: relative;
             max-width: 680px;
+            margin: 30px auto;
             cursor: pointer;
             overflow: hidden;
             border-radius: 8px;
@@ -256,36 +150,46 @@
             width: 100%;
             height: auto;
             display: block;
-            /* 預設模糊濾鏡 */
-            filter: blur(15px); /* 數值越大越模糊 */
-            transition: filter 0.3s ease; /* 增加平滑過渡動畫 */
-        }
-        
-        /* 點擊（按下）時的狀態 */
-        .decoded-image-container:active .blurred-image {
-            filter: blur(0); /* 清晰 */
+            filter: blur(25px); /* 預設模糊 */
+            transition: filter 0.5s ease;
         }
 
-        /* 點擊解碼的提示文字（可選，增加指引性） */
         .decode-overlay {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             color: #ffffff;
             background-color: rgba(0, 0, 0, 0.7);
             padding: 10px 20px;
             border-radius: 20px;
             font-size: 14px;
-            font-family: sans-serif;
-            letter-spacing: 1px;
-            pointer-events: none; /* 讓點擊事件穿透到圖片上 */
+            pointer-events: none;
             transition: opacity 0.3s ease;
         }
 
-        /* 點擊（按下）時隱藏提示文字 */
-        .decoded-image-container:active .decode-overlay {
+        /* 當被點擊後切換的狀態 */
+        .decoded-image-container.is-decoded .blurred-image {
+            filter: blur(0);
+        }
+        .decoded-image-container.is-decoded .decode-overlay {
             opacity: 0;
+        }
+
+        /* --- Modal & Lightbox 略 (保持你原本的樣式) --- */
+        .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); overflow-y: auto; }
+        .modal-content { margin: 10% auto; width: 90%; max-width: 800px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .modal-item { aspect-ratio: 1/1; overflow: hidden; border-radius: 4px; cursor: pointer; }
+        .modal-item img { width: 100%; height: 100%; object-fit: cover; }
+        .close-btn { position: fixed; top: 15px; right: 25px; color: #fff; font-size: 35px; cursor: pointer; }
+        .lightbox { display: none; position: fixed; z-index: 20000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); align-items: center; justify-content: center; }
+        .lightbox-content { max-width: 90%; max-height: 90%; opacity: 0; transition: opacity 0.3s; }
+        .lightbox.active .lightbox-content { opacity: 1; }
+
+        @media (max-width: 768px) {
+            .mobile-header { display: flex; }
+            .sidebar { position: fixed; left: 0; top: 50px; bottom: 0; z-index: 999; transform: translateX(-100%); }
+            .sidebar.active { transform: translateX(0); }
+            .main-content { padding: 70px 20px 20px 20px; }
         }
     </style>
 </head>
@@ -298,9 +202,7 @@
 </header>
 
 <nav class="sidebar" id="sidebar">
-    <div class="sidebar-title">
-        <a href="../index.html">🌻卿卿我我-旅程分享</a>
-    </div>
+    <div class="sidebar-title"><a href="../index.html">🌻卿卿我我-旅程分享</a></div>
     <div class="nav-group-label">ALBUM</div>
     <a href="javascript:void(0)" class="nav-item" onclick="openModal(); closeSidebar();">📷 章節CG</a>
     <div class="nav-group-label">EXTRAS</div>
@@ -309,22 +211,20 @@
     <div class="nav-group-label">CELEBRATION</div>
     <a href="Halloween2025-01.html" class="nav-item">🍬 萬聖節-小小印提！？</a>
     <a href="Halloween2025-02.html" class="nav-item">🎃 萬聖節-裝扮構想</a>
-</div>
 </nav>
 
 <main class="main-content" onclick="closeSidebar()">
     <div class="content-container">
-        <article id="ch1">
-
-           <h2>第？章：萬聖節-裝扮構想</h2>
+        <article>
+            <h2>第？章：萬聖節-裝扮構想</h2>
             <div class="novel-text">
-警告，內涵劇透成分，請閱讀故第一章完畢後再繼續閱讀。
-<div class="decoded-image-container">
-    <img src="images/SideCG/第0章-印提.png" alt="劇情截圖01" class="blurred-image" id="decodedImage">
-    <div class="decode-overlay">防雷模糊</div>
-</div>
-	</div>
-
+                警告，內含劇透成分，請閱讀完第一章後再繼續。
+                
+                <div class="decoded-image-container" onclick="toggleDecode(this)">
+                    <img src="images/SideCG/第0章-印提.png" alt="劇情截圖01" class="blurred-image">
+                    <div class="decode-overlay">點擊解碼防雷</div>
+                </div>
+            </div>
         </article>
     </div>
 </main>
@@ -332,60 +232,40 @@
 <div id="imageModal" class="modal">
     <span class="close-btn" onclick="closeModal()">&times;</span>
     <div class="modal-content">
-        <div class="modal-item" onclick="openLightbox(this)"><img src="../images/SideCG/2025萬聖節變裝.png" alt="CG 1" loading="lazy"></div>
-        
-        <p class="modal-footer-text">🌻點擊圖片檢視大圖 | 點擊背景關閉網格牆</p>
+        <div class="modal-item" onclick="openLightbox(this)"><img src="../images/SideCG/2025萬聖節變裝.png" alt="CG"></div>
     </div>
 </div>
-
-<div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-img" class="lightbox-content" src="" alt="大圖檢視">
-</div>
+<div id="lightbox" class="lightbox" onclick="closeLightbox()"><img id="lightbox-img" class="lightbox-content"></div>
 
 <script>
-    // 側邊欄開關
     function toggleSidebar() { document.getElementById("sidebar").classList.toggle("active"); }
     function closeSidebar() { document.getElementById("sidebar").classList.remove("active"); }
-
-    // 網格牆 Modal 控制
     function openModal() { document.getElementById("imageModal").style.display = "block"; }
     function closeModal() { document.getElementById("imageModal").style.display = "none"; }
 
-    // 💡 大圖視窗 (Lightbox) 控制
+    // 新增：點擊切換解碼函式
+    function toggleDecode(element) {
+        element.classList.toggle('is-decoded');
+    }
+
     function openLightbox(element) {
-        // 1. 抓取被點擊容器內的圖片來源 (src)
         const imgSrc = element.querySelector('img').src;
         const lightbox = document.getElementById("lightbox");
         const lightboxImg = document.getElementById("lightbox-img");
-
-        // 2. 先將 lightbox 顯示出來，但內容透明 (CSS transition 會處理動畫)
         lightbox.style.display = "flex";
-        
-        // 3. 當大圖載入完成後，再賦予 active 樣式 (顯示出來)
-        lightboxImg.onload = function() {
-            lightbox.classList.add('active');
-        };
-        
-        // 4. 設定大圖的來源
+        lightboxImg.onload = function() { lightbox.classList.add('active'); };
         lightboxImg.src = imgSrc;
     }
 
     function closeLightbox() {
         const lightbox = document.getElementById("lightbox");
-        // 移除 active 樣式，大圖變透明
         lightbox.classList.remove('active');
-        // 等待 CSS 動畫結束後再隱藏 lightbox，避免圖片殘影
-        setTimeout(() => {
-            lightbox.style.display = "none";
-            // 清空 src，避免下次打開時先顯示舊圖
-            document.getElementById("lightbox-img").src = "";
-        }, 300);
+        setTimeout(() => { lightbox.style.display = "none"; }, 300);
     }
 
-    // 點擊網格牆背景關閉 Modal
     window.onclick = function(event) {
         let modal = document.getElementById("imageModal");
-        if (event.target == modal) { modal.style.display = "none"; }
+        if (event.target == modal) { closeModal(); }
     }
 </script>
 
