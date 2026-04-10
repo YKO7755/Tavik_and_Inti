@@ -246,7 +246,17 @@
         .lightbox.active .lightbox-content {
             opacity: 1;
         }
-
+	/* --- 頁尾版權聲明 --- */
+	.site-footer {
+	    text-align: center;
+	    color: #666;
+	    font-size: 12px;
+	    line-height: 1.8;
+	    padding: 40px 0 20px 0;
+	    border-top: 1px solid var(--notion-border);
+	    margin-top: 40px;
+	    font-family: sans-serif;
+	}
         /* --- 響應式修正 --- */
         @media (max-width: 768px) {
             body { flex-direction: column; }
@@ -381,7 +391,11 @@
     <a href="chapter2.html" class="nav-next">下一篇 →</a>
 </div>
         </article>
-    </div>
+   <footer class="site-footer">
+    © 2026 [Yko]. All Rights Reserved.<br>
+    本站文字內容受著作權保護。插圖、CG 係由 AI 協作生成，若為非 AI 作品將另行特別備註。
+</footer>
+	</div>
 </main>
 
 <div id="imageModal" class="modal">
