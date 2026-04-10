@@ -242,6 +242,51 @@
             .modal-content { grid-template-columns: repeat(2, 1fr); margin: 25% auto; }
             .modal-footer-text { grid-column: span 2; }
         }
+        /* --- 打碼圖片效果 --- */
+        .decoded-image-container {
+            position: relative;
+            max-width: 680px;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .blurred-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            /* 預設模糊濾鏡 */
+            filter: blur(15px); /* 數值越大越模糊 */
+            transition: filter 0.3s ease; /* 增加平滑過渡動畫 */
+        }
+        
+        /* 點擊（按下）時的狀態 */
+        .decoded-image-container:active .blurred-image {
+            filter: blur(0); /* 清晰 */
+        }
+
+        /* 點擊解碼的提示文字（可選，增加指引性） */
+        .decode-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-family: sans-serif;
+            letter-spacing: 1px;
+            pointer-events: none; /* 讓點擊事件穿透到圖片上 */
+            transition: opacity 0.3s ease;
+        }
+
+        /* 點擊（按下）時隱藏提示文字 */
+        .decoded-image-container:active .decode-overlay {
+            opacity: 0;
+        }
     </style>
 </head>
 <body>
@@ -273,7 +318,11 @@
 
            <h2>第？章：萬聖節-裝扮構想</h2>
             <div class="novel-text">
-測試：123456
+警告，內涵劇透成分，請閱讀故第一章完畢後再繼續閱讀。
+<div class="decoded-image-container">
+    <img src="images/SideCG/第0章-印提.png" alt="劇情截圖01" class="blurred-image" id="decodedImage">
+    <div class="decode-overlay">防雷模糊</div>
+</div>
 	</div>
 
         </article>
