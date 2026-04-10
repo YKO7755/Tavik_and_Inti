@@ -139,7 +139,6 @@
         .decoded-image-container {
             position: relative;
             max-width: 680px;
-            margin: 30px auto;
             cursor: pointer;
             overflow: hidden;
             border-radius: 8px;
@@ -175,7 +174,7 @@
             opacity: 0;
         }
 
-        /* --- Modal & Lightbox 略 (保持你原本的樣式) --- */
+        /* --- Modal & Lightbox  --- */
         .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); overflow-y: auto; }
         .modal-content { margin: 10% auto; width: 90%; max-width: 800px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
         .modal-item { aspect-ratio: 1/1; overflow: hidden; border-radius: 4px; cursor: pointer; }
@@ -219,10 +218,11 @@
             <h2>第？章：萬聖節-裝扮構想</h2>
             <div class="novel-text">
                 警告，內含劇透成分，請閱讀完第一章後再繼續。
-                
-                <div class="decoded-image-container" onclick="toggleDecode(this)">
-                    <img src="../images/SideCG/第0章-印提.png" alt="劇情截圖01" class="blurred-image">
-                    <div class="decode-overlay">防雷模糊</div>
+             	<div class="decoded-image-container" onclick="toggleDecode(this)">
+		<img src="../images/SideCG/萬聖節01.png" alt="劇情截圖01" class="blurred-image">
+		<img src="../images/SideCG/萬聖節02.png" alt="劇情截圖02" class="blurred-image">
+		<img src="../images/SideCG/萬聖節03.png" alt="劇情截圖03" class="blurred-image">
+		<div class="decode-overlay">防雷模糊</div>
                 </div>
             </div>
         </article>
@@ -233,6 +233,11 @@
     <span class="close-btn" onclick="closeModal()">&times;</span>
     <div class="modal-content">
         <div class="modal-item" onclick="openLightbox(this)"><img src="../images/SideCG/2025萬聖節變裝.png" alt="CG"></div>
+        <div class="modal-item" onclick="openLightbox(this)"><img src="../images/SideCG/2025萬聖節變裝備選01.png" alt="CG"></div>
+        <div class="modal-item" onclick="openLightbox(this)"><img src="../images/SideCG/2025萬聖節變裝備選02.png" alt="CG"></div>
+        <div class="modal-item" onclick="openLightbox(this)"><img src="../images/SideCG/2025萬聖節變裝備選03.png" alt="CG"></div>
+        <div class="modal-item" onclick="openLightbox(this)"><img src="../images/SideCG/2025萬聖節變裝備選04.png" alt="CG"></div>
+
     </div>
 </div>
 <div id="lightbox" class="lightbox" onclick="closeLightbox()"><img id="lightbox-img" class="lightbox-content"></div>
