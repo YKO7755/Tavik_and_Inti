@@ -107,7 +107,14 @@
         }
 
         .nav-item:hover { background-color: #2c2c2c; }
-        /* --- 主要內容區 --- */
+        /* 讓全站文字無法被選取 */
+body {
+    -webkit-user-select: none;  /* Safari */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* 標準語法 */
+}
+
+		/* --- 主要內容區 --- */
         .main-content {
             flex: 1;
             overflow-y: auto;
@@ -288,9 +295,8 @@
 
         </article>
 <footer class="site-footer">
-© 2026 [Yko]. All Rights Reserved.
-本站文字內容受著作權保護，部分敘事由 AI 協作輔助生成。
-插圖、CG 係由 AI 協作生成，若為非 AI 作品將另行特別備註。
+© 2026 [Yko]. All Rights Reserved.<br>
+本站文字內容受著作權保護，部分敘事由 AI 協作輔助生成。插圖、CG 係由 AI 協作生成，若為非 AI 作品將另行特別備註。
 </footer>
 	</div>
 </main>
