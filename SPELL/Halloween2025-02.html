@@ -23,10 +23,6 @@
             overflow: hidden;
             background-color: var(--notion-bg);
             color: var(--notion-text);
-            /* 防止文字被選取以保護原創內容 */
-            -webkit-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
         }
         
         .description { color: #999999; }
@@ -101,6 +97,12 @@
         }
 
         .nav-item:hover { background-color: #2c2c2c; }
+/* 讓全站文字無法被選取 */
+body {
+    -webkit-user-select: none;  /* Safari */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* 標準語法 */
+}
 
         /* --- 主要內容區 --- */
         .main-content {
@@ -139,7 +141,7 @@
             text-align: left; 
         }
 
-        /* --- 圖片容器效果 --- */
+        /* --- 打碼圖片效果 --- */
         .decoded-image-container {
             position: relative;
             max-width: 680px;
@@ -147,14 +149,13 @@
             overflow: hidden;
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-top: 20px;
         }
 
         .blurred-image {
             width: 100%;
             height: auto;
             display: block;
-            filter: blur(25px);
+            filter: blur(25px); /* 預設模糊 */
             transition: filter 0.5s ease;
         }
 
@@ -171,47 +172,42 @@
             transition: opacity 0.3s ease;
         }
 
-        .decoded-image-container.is-decoded .blurred-image { filter: blur(0); }
-        .decoded-image-container.is-decoded .decode-overlay { opacity: 0; }
+        /* 當被點擊後切換的狀態 */
+        .decoded-image-container.is-decoded .blurred-image {
+            filter: blur(0);
+        }
+        .decoded-image-container.is-decoded .decode-overlay {
+            opacity: 0;
+        }
 
-        /* --- Modal & Lightbox 升級 --- */
+        /* --- Modal & Lightbox  --- */
         .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); overflow-y: auto; }
         .modal-content { margin: 10% auto; width: 90%; max-width: 800px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
         .modal-item { aspect-ratio: 1/1; overflow: hidden; border-radius: 4px; cursor: pointer; }
         .modal-item img { width: 100%; height: 100%; object-fit: cover; }
-        .close-btn { position: fixed; top: 15px; right: 25px; color: #fff; font-size: 35px; cursor: pointer; z-index: 20002; }
-        
-        .lightbox { 
-            display: none; position: fixed; z-index: 20000; left: 0; top: 0; width: 100%; height: 100%; 
-            background-color: rgba(0,0,0,0.95); align-items: center; justify-content: center; 
-        }
+        .close-btn { position: fixed; top: 15px; right: 25px; color: #fff; font-size: 35px; cursor: pointer; }
+        .lightbox { display: none; position: fixed; z-index: 20000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); align-items: center; justify-content: center; }
         .lightbox-content { max-width: 90%; max-height: 90%; opacity: 0; transition: opacity 0.3s; }
         .lightbox.active .lightbox-content { opacity: 1; }
-
-        /* 導航按鈕樣式 */
-        .lightbox-nav {
-            position: absolute; top: 50%; transform: translateY(-50%);
-            background: none; border: none; color: white; font-size: 40px;
-            padding: 20px; cursor: pointer; z-index: 20001; opacity: 0.5; transition: opacity 0.2s;
-        }
-        .lightbox-nav:hover { opacity: 1; background-color: rgba(255,255,255,0.1); }
-        .nav-prev { left: 10px; }
-        .nav-next { right: 10px; }
 
         @media (max-width: 768px) {
             .mobile-header { display: flex; }
             .sidebar { position: fixed; left: 0; top: 50px; bottom: 0; z-index: 999; transform: translateX(-100%); }
             .sidebar.active { transform: translateX(0); }
             .main-content { padding: 70px 20px 20px 20px; }
-            .lightbox-nav { font-size: 30px; padding: 10px; }
         }
-
-        .site-footer {
-            text-align: center; color: #666; font-size: 12px; line-height: 1.8;
-            padding: 40px 0 20px 0; border-top: 1px solid var(--notion-border);
-            margin-top: 40px; font-family: sans-serif;
-        }
-    </style>
+	/* --- 頁尾版權聲明 --- */
+	.site-footer {
+	    text-align: center;
+	    color: #666;
+	    font-size: 12px;
+	    line-height: 1.8;
+	    padding: 40px 0 20px 0;
+	    border-top: 1px solid var(--notion-border);
+	    margin-top: 40px;
+	    font-family: sans-serif;
+	}
+	</style>
 </head>
 <body>
 
@@ -240,71 +236,52 @@
             <h2>咒語：萬聖節-裝扮構想</h2>
             <div class="novel-text">
                 警告，內含劇透成分，請閱讀完第一章後再繼續。
-                <div class="decoded-image-container" onclick="toggleDecode(this)">
-                    <img src="../images/SideCG/萬聖節01.png" alt="劇情截圖01" class="blurred-image">
-                    <div class="decode-overlay">防雷模糊</div>
+             	<div class="decoded-image-container" onclick="toggleDecode(this)">
+		<img src="../images/SideCG/萬聖節01.png" alt="劇情截圖01" class="blurred-image">
+		<img src="../images/SideCG/萬聖節02.png" alt="劇情截圖02" class="blurred-image">
+		<img src="../images/SideCG/萬聖節03.png" alt="劇情截圖03" class="blurred-image">
+		<div class="decode-overlay">防雷模糊</div>
                 </div>
             </div>
         </article>
-        <footer class="site-footer">
-            © 2026 [Yko]. All Rights Reserved.<br>
-            本站文字內容受著作權保護，部分敘事由 AI 協作輔助生成。插圖、CG 係由 AI 協作生成，若為非 AI 作品將另行特別備註。
-        </footer>
-    </div>
+<footer class="site-footer">
+© 2026 [Yko]. All Rights Reserved.<br>
+本站文字內容受著作權保護，部分敘事由 AI 協作輔助生成。插圖、CG 係由 AI 協作生成，若為非 AI 作品將另行特別備註。
+</footer>
+	</div>
 </main>
 
 <div id="imageModal" class="modal">
     <span class="close-btn" onclick="closeModal()">&times;</span>
     <div class="modal-content">
-        <div class="modal-item" onclick="openLightbox(0)"><img src="../images/SideCG/2025萬聖節變裝.png" alt="CG"></div>
-        <div class="modal-item" onclick="openLightbox(1)"><img src="../images/SideCG/2025萬聖節變裝備選01.png" alt="CG"></div>
-        <div class="modal-item" onclick="openLightbox(2)"><img src="../images/SideCG/2025萬聖節變裝備選02.png" alt="CG"></div>
-        <div class="modal-item" onclick="openLightbox(3)"><img src="../images/SideCG/2025萬聖節變裝備選03.png" alt="CG"></div>
-        <div class="modal-item" onclick="openLightbox(4)"><img src="../images/SideCG/2025萬聖節變裝備選04.png" alt="CG"></div>
+        <div class="modal-item" onclick="openLightbox(this)"><img src="../images/SideCG/2025萬聖節變裝.png" alt="CG"></div>
+        <div class="modal-item" onclick="openLightbox(this)"><img src="../images/SideCG/2025萬聖節變裝備選01.png" alt="CG"></div>
+        <div class="modal-item" onclick="openLightbox(this)"><img src="../images/SideCG/2025萬聖節變裝備選02.png" alt="CG"></div>
+        <div class="modal-item" onclick="openLightbox(this)"><img src="../images/SideCG/2025萬聖節變裝備選03.png" alt="CG"></div>
+        <div class="modal-item" onclick="openLightbox(this)"><img src="../images/SideCG/2025萬聖節變裝備選04.png" alt="CG"></div>
+
     </div>
 </div>
-
-<div id="lightbox" class="lightbox">
-    <span class="close-btn" onclick="closeLightbox()">&times;</span>
-    <button class="lightbox-nav nav-prev" onclick="changeImage(-1); event.stopPropagation();">&#10094;</button>
-    <img id="lightbox-img" class="lightbox-content" onclick="event.stopPropagation();">
-    <button class="lightbox-nav nav-next" onclick="changeImage(1); event.stopPropagation();">&#10095;</button>
-</div>
+<div id="lightbox" class="lightbox" onclick="closeLightbox()"><img id="lightbox-img" class="lightbox-content"></div>
 
 <script>
-    let currentImgIndex = 0;
-    const allImages = document.querySelectorAll('.modal-item img');
-
     function toggleSidebar() { document.getElementById("sidebar").classList.toggle("active"); }
     function closeSidebar() { document.getElementById("sidebar").classList.remove("active"); }
     function openModal() { document.getElementById("imageModal").style.display = "block"; }
     function closeModal() { document.getElementById("imageModal").style.display = "none"; }
 
-    function toggleDecode(element) { element.classList.toggle('is-decoded'); }
-
-    // 開啟大圖，傳入索引值
-    function openLightbox(index) {
-        currentImgIndex = index;
-        const lightbox = document.getElementById("lightbox");
-        lightbox.style.display = "flex";
-        updateLightboxContent();
+    // 新增：點擊切換解碼函式
+    function toggleDecode(element) {
+        element.classList.toggle('is-decoded');
     }
 
-    // 更新大圖內容
-    function updateLightboxContent() {
+    function openLightbox(element) {
+        const imgSrc = element.querySelector('img').src;
         const lightbox = document.getElementById("lightbox");
         const lightboxImg = document.getElementById("lightbox-img");
-        lightbox.classList.remove('active');
-        lightboxImg.src = allImages[currentImgIndex].src;
+        lightbox.style.display = "flex";
         lightboxImg.onload = function() { lightbox.classList.add('active'); };
-    }
-
-    // 切換圖片
-    function changeImage(step) {
-        currentImgIndex += step;
-        if (currentImgIndex >= allImages.length) currentImgIndex = 0;
-        if (currentImgIndex < 0) currentImgIndex = allImages.length - 1;
-        updateLightboxContent();
+        lightboxImg.src = imgSrc;
     }
 
     function closeLightbox() {
@@ -313,20 +290,9 @@
         setTimeout(() => { lightbox.style.display = "none"; }, 300);
     }
 
-    // 鍵盤支援
-    document.addEventListener('keydown', (e) => {
-        if (document.getElementById("lightbox").style.display === "flex") {
-            if (e.key === "ArrowLeft") changeImage(-1);
-            if (e.key === "ArrowRight") changeImage(1);
-            if (e.key === "Escape") closeLightbox();
-        }
-    });
-
     window.onclick = function(event) {
         let modal = document.getElementById("imageModal");
-        let lightbox = document.getElementById("lightbox");
-        if (event.target == modal) closeModal();
-        if (event.target == lightbox) closeLightbox();
+        if (event.target == modal) { closeModal(); }
     }
 </script>
 
