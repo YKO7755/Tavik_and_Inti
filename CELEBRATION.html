@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>卿卿我我 | 旅程分享</title>
+    <title>卿卿我我 | 節慶區</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌻</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
     <style>
@@ -23,29 +23,11 @@
             overflow: hidden;
             background-color: var(--notion-bg);
             color: var(--notion-text);
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
-        
-	/* 背景描述：灰字、稍微縮點透明度 */
-	.description {
-	    color: #999999; 
-	}
 
-	/* 正常對話：*/
-	.dialogue {
- 	   color: #ffffff;
-	}
-
-	/* 禁用狀態的樣式 */
-	.nav-item.disabled, .extra-link-item.disabled {
-	    color: #666 !important;
-	    text-decoration: line-through;
-	    pointer-events: none;
-	    cursor: not-allowed;
-	    opacity: 0.6;
-	    border-left-color: #444 
-	}
-
-        /* --- 手機版頂部列 --- */
         .mobile-header {
             display: none;
             position: fixed;
@@ -67,7 +49,6 @@
             cursor: pointer;
         }
 
-        /* --- 側邊欄 --- */
         .sidebar {
             width: 270px;
             background-color: var(--sidebar-bg);
@@ -106,15 +87,23 @@
             display: block;
         }
 
-        .nav-item:hover { background-color: #2c2c2c; }
-      /* 讓全站文字無法被選取 */
-body {
-    -webkit-user-select: none;  /* Safari */
-    -ms-user-select: none;      /* IE 10+ */
-    user-select: none;          /* 標準語法 */
-}
+        .nav-item:hover {
+            background-color: #2c2c2c;
+        }
 
-		/* --- 主要內容區 --- */
+        .nav-item.active {
+            background-color: #2c2c2c;
+            color: #fff;
+        }
+
+        .nav-item.disabled {
+            color: #666 !important;
+            text-decoration: line-through;
+            pointer-events: none;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
         .main-content {
             flex: 1;
             overflow-y: auto;
@@ -128,145 +117,69 @@ body {
             padding: 60px 0;
         }
 
-        /* --- 文字內容格式 --- */
-        .novel-text {
-            font-family: 'Songti TC', serif;
-            font-size: 1.3em;
-            line-height: 1.8;
-            color: #c4c4c4;
-            letter-spacing: 0.03em;
-            text-align: left;
-            max-width: 680px;
-            margin: 0 auto;
-            white-space: pre-line;
-	    word-wrap: break-word;       /* 遇到太長的數字或英文會自動折行 */
- 	   overflow-wrap: break-word;   /* 雙重保險，防止內容撐開容器 */
-        }
-	html {
-  	  overflow-y: scroll;
-	}
-        h2 { 
-            font-size: 1.8em; 
+        h2 {
+            font-size: 1.8em;
             border-bottom: 1px solid var(--notion-border);
             padding-bottom: 15px;
-            max-width: 680px; 
-            margin: 0 auto 20px auto; 
-            text-align: left; 
+            max-width: 680px;
+            margin: 0 auto 20px auto;
+            text-align: left;
+            font-family: 'Noto Serif TC', serif;
         }
 
-        /* --- CG 網格牆 Modal (IG風格) --- */
-        .modal {
-            display: none; 
-            position: fixed;
-            z-index: 9999;
-            left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.9);
-            overflow-y: auto;
-            padding-bottom: 50px;
+        .intro-text {
+            max-width: 680px;
+            margin: 0 auto 30px auto;
+            color: #aaa;
+            line-height: 1.8;
+            font-size: 1em;
         }
 
-        .modal-content {
-            margin: 10% auto;
-            width: 90%;
-            max-width: 800px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
+        .celebration-list {
+            max-width: 680px;
+            margin: 0 auto;
         }
 
-        .modal-item {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            overflow: hidden;
-            border-radius: 4px;
-            background: #222;
-            cursor: pointer; /* 滑鼠移上去變手指 */
-            transition: transform 0.2s;
+        .celebration-list .nav-group-label {
+            margin-left: 0;
+            margin-bottom: 10px;
         }
 
-        .modal-item:hover {
-            transform: scale(1.03); /* 滑鼠移上去稍微放大 */
-        }
-
-        .modal-item img {
-            width: 100%; height: 100%; object-fit: cover;
-        }
-
-        .modal-footer-text {
-            grid-column: span 3;
-            color: #888;
+        .site-footer {
             text-align: center;
-            font-size: 13px;
-            margin-top: 30px;
+            color: #666;
+            font-size: 12px;
+            line-height: 1.8;
+            padding: 40px 0 20px 0;
+            border-top: 1px solid var(--notion-border);
+            margin-top: 40px;
             font-family: sans-serif;
         }
 
-        .close-btn {
-            position: fixed;
-            top: 15px; right: 25px;
-            color: #fff; font-size: 35px; font-weight: bold;
-            cursor: pointer; z-index: 10000;
-        }
-
-        /* --- 大圖顯示視窗 (Lightbox) --- */
-        .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 20000; /* 確保在網格牆之上 */
-            left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.95);
-            align-items: center;
-            justify-content: center;
-            cursor: zoom-out; /* 點擊關閉 */
-        }
-
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 8px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.8);
-            /* 預設隱藏，載入完成後由 JS 顯示 */
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .lightbox.active .lightbox-content {
-            opacity: 1;
-        }
-
-        /* --- 響應式修正 --- */
         @media (max-width: 768px) {
             body { flex-direction: column; }
             .mobile-header { display: flex; }
+
             .sidebar {
                 position: fixed;
                 left: 0; top: 50px; bottom: 0;
                 z-index: 999;
                 transform: translateX(-100%);
             }
+
             .sidebar.active { transform: translateX(0); }
-            .main-content { padding: 70px 20px 20px 20px; }
-            .modal-content { grid-template-columns: repeat(2, 1fr); margin: 25% auto; }
-            .modal-footer-text { grid-column: span 2; }
+
+            .main-content {
+                padding: 70px 20px 20px 20px;
+            }
         }
-	/* --- 頁尾版權聲明 --- */
-	.site-footer {
-	    text-align: center;
-	    color: #666;
-	    font-size: 12px;
-	    line-height: 1.8;
-	    padding: 40px 0 20px 0;
-	    border-top: 1px solid var(--notion-border);
-	    margin-top: 40px;
-	    font-family: sans-serif;
-	}
-	</style>
+    </style>
 </head>
 <body>
 
 <header class="mobile-header">
     <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
-    <div style="font-weight: bold; font-size: 14px;">🌻 旅程分享</div>
+    <div style="font-weight: bold; font-size: 14px;">🌻 節慶區</div>
     <div style="width: 24px;"></div>
 </header>
 
@@ -275,83 +188,38 @@ body {
         <a href="index.html">🌻卿卿我我-旅程分享</a>
     </div>
     <div class="nav-group-label">EXTRAS</div>
-    <a href="CELEBRATION.html" class="nav-item">🎈 節慶區</a>
+    <a href="CELEBRATION.html" class="nav-item active">🎈 節慶區</a>
     <a href="SPELL.html" class="nav-item">🔮 咒語區</a>
 </nav>
 
 <main class="main-content" onclick="closeSidebar()">
     <div class="content-container">
-        <article id="ch1">
-<div class="nav-group-label">CELEBRATION</div>
-    <a href="CELEBRATION/Halloween2025-01.html" class="nav-item">🍬 萬聖節-小小印提！？</a>
-</div>
+        <article id="celebration-content">
+            <h2>🎈 節慶區</h2>
+            <div class="intro-text">
+                這裡收錄節日主題的小短篇番外。
+            </div>
+
+            <div class="celebration-list">
+                <div class="nav-group-label">CELEBRATION</div>
+                <a href="CELEBRATION/Halloween2025-01.html" class="nav-item">🍬 萬聖節-小小印提！？</a>
+            </div>
         </article>
-<footer class="site-footer">
-© 2026 [Yko]. All Rights Reserved.<br>
-本站文字內容受著作權保護，部分敘事由 AI 協作輔助生成。插圖、CG 係由 AI 協作生成，若為非 AI 作品將另行特別備註。
-</footer>
-</div>
+
+        <footer class="site-footer">
+            © 2026 [Yko]. All Rights Reserved.<br>
+            本站文字內容受著作權保護，部分敘事由 AI 協作輔助生成。插圖、CG 係由 AI 協作生成，若為非 AI 作品將另行特別備註。
+        </footer>
+    </div>
 </main>
 
-<div id="imageModal" class="modal">
-    <span class="close-btn" onclick="closeModal()">&times;</span>
-    <div class="modal-content">
-        <div class="modal-item" onclick="openLightbox(this)"><img src="images/cg/印提(微笑).png" alt="CG 1" loading="lazy"></div>
-        <div class="modal-item" onclick="openLightbox(this)"><img src="images/cg/大雨濕透.png" alt="CG 2" loading="lazy"></div>
-        <div class="modal-item" onclick="openLightbox(this)"><img src="images/cg/印提(寵溺微笑).png" alt="CG 3" loading="lazy"></div>
-        
-        <p class="modal-footer-text">🌻點擊圖片檢視大圖 | 點擊背景關閉網格牆</p>
-    </div>
-</div>
-
-<div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-img" class="lightbox-content" src="" alt="大圖檢視">
-</div>
-
 <script>
-    // 側邊欄開關
-    function toggleSidebar() { document.getElementById("sidebar").classList.toggle("active"); }
-    function closeSidebar() { document.getElementById("sidebar").classList.remove("active"); }
-
-    // 網格牆 Modal 控制
-    function openModal() { document.getElementById("imageModal").style.display = "block"; }
-    function closeModal() { document.getElementById("imageModal").style.display = "none"; }
-
-    // 💡 大圖視窗 (Lightbox) 控制
-    function openLightbox(element) {
-        // 1. 抓取被點擊容器內的圖片來源 (src)
-        const imgSrc = element.querySelector('img').src;
-        const lightbox = document.getElementById("lightbox");
-        const lightboxImg = document.getElementById("lightbox-img");
-
-        // 2. 先將 lightbox 顯示出來，但內容透明 (CSS transition 會處理動畫)
-        lightbox.style.display = "flex";
-        
-        // 3. 當大圖載入完成後，再賦予 active 樣式 (顯示出來)
-        lightboxImg.onload = function() {
-            lightbox.classList.add('active');
-        };
-        
-        // 4. 設定大圖的來源
-        lightboxImg.src = imgSrc;
+    function toggleSidebar() {
+        document.getElementById("sidebar").classList.toggle("active");
     }
 
-    function closeLightbox() {
-        const lightbox = document.getElementById("lightbox");
-        // 移除 active 樣式，大圖變透明
-        lightbox.classList.remove('active');
-        // 等待 CSS 動畫結束後再隱藏 lightbox，避免圖片殘影
-        setTimeout(() => {
-            lightbox.style.display = "none";
-            // 清空 src，避免下次打開時先顯示舊圖
-            document.getElementById("lightbox-img").src = "";
-        }, 300);
-    }
-
-    // 點擊網格牆背景關閉 Modal
-    window.onclick = function(event) {
-        let modal = document.getElementById("imageModal");
-        if (event.target == modal) { modal.style.display = "none"; }
+    function closeSidebar() {
+        document.getElementById("sidebar").classList.remove("active");
     }
 </script>
 
