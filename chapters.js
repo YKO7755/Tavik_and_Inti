@@ -43,12 +43,22 @@ const CHAPTERS = [
 {
   id:"ch4",
   group:"第一章",
-  nav:"📘 04：沙塵之夜",
-  title:"04：沙塵之夜",
-  available:false,
+  nav:"📘 04：姓名",
+  title:"04：姓名",
+  available:true,
   filePath:"chapters/part1/ch4.txt",
   cg:[]
+},
+{
+  id:"ch4",
+  group:"第一章",
+  nav:"📘 05：沙塵與棋局",
+  title:"05：沙塵與棋局",
+  available:false,
+  filePath:"chapters/part1/ch5.txt",
+  cg:[]
 }
+
 ];
 
 // 自動補齊 prev / next
