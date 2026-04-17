@@ -5,17 +5,11 @@ const CHAPTERS = [
   nav:"📘 00：印提",
   title:"00：印提",
   available:true,
-
   secret:true,
-
   filePath:"chapters/part1/ch0.txt",
-
   cg:[
     { src:"images/SideCG/第0章-印提.png", alt:"印提 CG" }
-  ],
-
-  prev:null,
-  next:"ch1"
+  ]
 },
 {
   id:"ch1",
@@ -23,13 +17,8 @@ const CHAPTERS = [
   nav:"📘 01：倒臥廢土",
   title:"01：倒臥廢土",
   available:true,
-
   filePath:"chapters/part1/ch1.txt",
-
-  cg:[],
-
-  prev:null,
-  next:"ch2"
+  cg:[]
 },
 {
   id:"ch2",
@@ -37,12 +26,8 @@ const CHAPTERS = [
   nav:"📘 02：異鄉人",
   title:"02：異鄉人",
   available:true,
-
   filePath:"chapters/part1/ch2.txt",
-
-  cg:[],
-  prev:"ch1",
-  next:"ch3"
+  cg:[]
 },
 {
   id:"ch3",
@@ -50,14 +35,10 @@ const CHAPTERS = [
   nav:"📘 03：澤洛瓦",
   title:"03：澤洛瓦",
   available:true,
-
   filePath:"chapters/part1/ch3.txt",
-
   cg:[
     { src:"images/cg/塔哥親媽資料001.png", alt:"澤洛瓦" }
-  ],
-  prev:"ch2",
-  next:"ch4"
+  ]
 },
 {
   id:"ch4",
@@ -65,11 +46,24 @@ const CHAPTERS = [
   nav:"📘 04：沙塵之夜",
   title:"04：沙塵之夜",
   available:false,
-
   filePath:"chapters/part1/ch4.txt",
-
-  cg:[],
-  prev:"ch3",
-  next: null
-},
+  cg:[]
+}
 ];
+
+// 自動補齊 prev / next
+(function addChapterLinks() {
+  const mainChapters = CHAPTERS.filter(ch => !ch.secret);
+
+  mainChapters.forEach((ch, index) => {
+    ch.prev = index > 0 ? mainChapters[index - 1].id : null;
+    ch.next = index < mainChapters.length - 1 ? mainChapters[index + 1].id : null;
+  });
+
+  // secret 章不進主線，但如果你想保留手動接回主線，可以在這裡特別指定
+  const secretCh0 = CHAPTERS.find(ch => ch.id === "ch0");
+  if (secretCh0) {
+    secretCh0.prev = null;
+    secretCh0.next = "ch1";
+  }
+})();
