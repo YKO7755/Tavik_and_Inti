@@ -269,15 +269,7 @@ body {
     <div class="nav-group-label">ABOUT</div>
     <a href="#intro-section" class="nav-item" onclick="closeSidebar()">👬 人物介紹</a>
     <div class="nav-group-label">CHAPTERS</div>
-    <details class="nav-toggle-group">
-        <summary class="nav-item">📚 第一章</summary>
-    <div class="nav-toggle-content">
-        <a href="reader.html?ch=ch1" class="nav-item">📘 01：倒臥廢土</a>
-        <a href="reader.html?ch=ch2" class="nav-item">📘 02：異鄉人</a>
-        <a href="reader.html?ch=ch3" class="nav-item">📘 03：澤洛瓦</a>
-        <a href="javascript:void(0)" class="nav-item disabled">📘 04：沙塵之夜(尚未開放)</a>
-    </div>
-</details>
+    <div id="sidebar-nav"></div>
     <div class="nav-group-label">EXTRAS</div>
     <a href="CELEBRATION.html" class="nav-item">🎈 節慶區</a>
     <a href="SPELL.html" class="nav-item">🔮 咒語區</a>
@@ -327,9 +319,43 @@ body {
     <img id="lightbox-img" class="lightbox-content" src="" alt="大圖檢視">
 </div>
 
+<script src="chapters.js"></script>
 <script>
     function toggleSidebar() { document.getElementById("sidebar").classList.toggle("active"); }
     function closeSidebar() { document.getElementById("sidebar").classList.remove("active"); }
+
+    // 與 reader.html 相同的 sidebar 生成邏輯
+    function buildSidebar() {
+      const nav = document.getElementById("sidebar-nav");
+      nav.innerHTML = "";
+      let lastGroup = null;
+      let groupContent = null;
+
+      CHAPTERS.forEach(ch => {
+        if (ch.secret) return;
+        if (ch.group && ch.group !== lastGroup) {
+          lastGroup = ch.group;
+          const groupEl = document.createElement("details");
+          groupEl.className = "nav-toggle-group";
+          groupEl.open = true;
+          const summary = document.createElement("summary");
+          summary.className = "nav-item";
+          summary.textContent = "📚 " + ch.group;
+          groupEl.appendChild(summary);
+          groupContent = document.createElement("div");
+          groupContent.className = "nav-toggle-content";
+          groupEl.appendChild(groupContent);
+          nav.appendChild(groupEl);
+        }
+        const a = document.createElement("a");
+        a.className = "nav-item" + (ch.available ? "" : " disabled");
+        a.textContent = ch.nav;
+        a.href = ch.available ? "reader.html?ch=" + ch.id : "javascript:void(0)";
+        (groupContent || nav).appendChild(a);
+      });
+    }
+
+    buildSidebar();
 
     function openLightbox(element) {
         const imgSrc = element.querySelector('img').src;
