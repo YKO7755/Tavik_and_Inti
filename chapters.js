@@ -6,6 +6,8 @@ const CHAPTERS = [
   title:"00：印提",
   available:true,
 
+  secret:true,
+
   filePath:"chapters/part1/ch0.txt",
 
   cg:[
