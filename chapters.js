@@ -17,7 +17,7 @@ const CHAPTERS = [
 },
 {
   id:"ch1",
-  group:null,
+  group:"第一章",
   nav:"📘 01：倒臥廢土",
   title:"01：倒臥廢土",
   available:true,
@@ -31,7 +31,7 @@ const CHAPTERS = [
 },
 {
   id:"ch2",
-  group:null,
+  group:"第一章",
   nav:"📘 02：異鄉人",
   title:"02：異鄉人",
   available:true,
@@ -44,7 +44,7 @@ const CHAPTERS = [
 },
 {
   id:"ch3",
-  group:null,
+  group:"第一章",
   nav:"📘 03：澤洛瓦",
   title:"03：澤洛瓦",
   available:true,
@@ -59,7 +59,7 @@ const CHAPTERS = [
 },
 {
   id:"ch4",
-  group:null,
+  group:"第一章",
   nav:"📘 04：沙塵之夜",
   title:"04：沙塵之夜",
   available:false,
