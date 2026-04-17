@@ -154,6 +154,15 @@
     .description { color: #999999; }
     .dialogue { color: #ffffff; }
 
+.novel-text a {
+  color: var(--accent-blue);
+  text-decoration: none;
+}
+
+.novel-text a:hover {
+  text-decoration: underline;
+}
+
     h2 {
       font-size: 1.8em;
       border-bottom: 1px solid var(--notion-border);
@@ -483,11 +492,15 @@
 
       const rawText = await response.text();
 
-      const formattedText = rawText
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/「([^」]+)」/g, '<span class="dialogue">「$1」</span>');
+	const formattedText = rawText
+	  .replace(/&/g, "&amp;")
+	  .replace(/</g, "&lt;")
+	  .replace(/>/g, "&gt;")
+	  .replace(/「([^」]+)」/g, '<span class="dialogue">「$1」</span>')
+	  .replace(
+	    /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+	    '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
+	  );
 
       document.getElementById("chapter-content").innerHTML = `
         <h2>${ch.title}</h2>
