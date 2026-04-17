@@ -54,8 +54,8 @@ const CHAPTERS = [
   cg:[
     { src:"images/cg/塔哥親媽資料001.png", alt:"澤洛瓦" }
   ],
-  prev:"ch1",
-  next:"ch3"
+  prev:"ch2",
+  next: null
 },
 {
   id:"ch4",
@@ -68,6 +68,6 @@ const CHAPTERS = [
 
   cg:[],
   prev:"ch3",
-  next: null,
+  next: null
 },
 ];
