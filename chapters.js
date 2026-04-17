@@ -57,7 +57,7 @@ const CHAPTERS = [
     { src:"images/cg/塔哥親媽資料001.png", alt:"澤洛瓦" }
   ],
   prev:"ch2",
-  next:"ch3"
+  next:"ch4"
 },
 {
   id:"ch4",
