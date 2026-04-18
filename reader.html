@@ -434,7 +434,9 @@
 
       const a = document.createElement("a");
       a.className = "nav-item" + (ch.available ? "" : " disabled") + (ch.id === currentId ? " active" : "");
-      a.textContent = ch.nav;
+	a.textContent = (ch.id === currentId)
+	  ? ch.nav.replace(/^📘/, "📖")
+	  : ch.nav;
 
       if (ch.available) {
         a.href = "reader.html?ch=" + ch.id;
