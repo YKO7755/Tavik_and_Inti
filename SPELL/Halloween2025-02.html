@@ -37,6 +37,15 @@
             pointer-events: none;
             opacity: 0.6;
         }
+.nav-toggle-group summary::-webkit-details-marker { display: none; }
+.nav-toggle-group summary {
+    list-style: none; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--notion-text); opacity: 1;
+}
+.nav-toggle-group[open] summary { color: rgba(227,227,227,0.5); }
+.nav-toggle-group summary:hover { background-color: #2c2c2c; }
+.nav-toggle-content { padding-left: 15px; border-left: 1px solid var(--notion-border); margin-left: 10px; }
 
         .mobile-header {
             display: none;
@@ -381,7 +390,8 @@
 
 <nav class="sidebar" id="sidebar">
     <div class="sidebar-title"><a href="../index.html">🌻卿卿我我-旅程分享</a></div>
-
+<div class="nav-group-label">CHAPTERS</div>
+    <div id="sidebar-nav"></div>
     <div class="nav-group-label">EXTRAS</div>
     <a href="../CELEBRATION.html" class="nav-item">🎈 節慶區</a>
     <a href="../SPELL.html" class="nav-item active">🔮 咒語區</a>
@@ -518,6 +528,38 @@
         if (event.target === modal) closeModal();
         if (event.target === lightbox) closeLightbox();
     };
+</script>
+<script src="../chapters.js"></script>
+<script>
+  function buildSidebar() {
+    const nav = document.getElementById("sidebar-nav");
+    nav.innerHTML = "";
+    let lastGroup = null;
+    let groupContent = null;
+    CHAPTERS.forEach(ch => {
+      if (ch.secret) return;
+      if (ch.group && ch.group !== lastGroup) {
+        lastGroup = ch.group;
+        const groupEl = document.createElement("details");
+        groupEl.className = "nav-toggle-group";
+        groupEl.open = false;
+        const summary = document.createElement("summary");
+        summary.className = "nav-item";
+        summary.textContent = "📚 " + ch.group;
+        groupEl.appendChild(summary);
+        groupContent = document.createElement("div");
+        groupContent.className = "nav-toggle-content";
+        groupEl.appendChild(groupContent);
+        nav.appendChild(groupEl);
+      }
+      const a = document.createElement("a");
+      a.className = "nav-item" + (ch.available ? "" : " disabled");
+      a.textContent = ch.nav;
+      a.href = ch.available ? "../reader.html?ch=" + ch.id : "javascript:void(0)";
+      (groupContent || nav).appendChild(a);
+    });
+  }
+  buildSidebar();
 </script>
 
 </body>
