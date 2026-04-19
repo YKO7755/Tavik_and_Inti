@@ -54,8 +54,19 @@ const CHAPTERS = [
   group:"第一章",
   nav:"📘 05：沙塵與棋局",
   title:"05：沙塵與棋局",
-  available:false,
+  available:true,
   filePath:"chapters/part1/ch5.txt",
+  cg:[
+    { src:"images/cg/棋局.png", alt:"棋局" }
+]
+},
+{
+  id:"ch6",
+  group:"第一章",
+  nav:"📘 06：整備",
+  title:"06：整備",
+  available:false,
+  filePath:"chapters/part1/ch6.txt",
   cg:[]
 }
 
