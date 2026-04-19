@@ -404,49 +404,57 @@
     if (e.target === document.getElementById("lightbox")) closeLightbox();
   };
 
-  function buildSidebar(currentId) {
-    const nav = document.getElementById("sidebar-nav");
-    nav.innerHTML = "";
+function buildSidebar(currentId) {
+  const nav = document.getElementById("sidebar-nav");
+  nav.innerHTML = "";
 
-    let lastGroup = null;
-    let groupContent = null;
+  const ch = CHAPTERS.find(c => c.id === currentId);
+  if (!ch) return;
 
-    CHAPTERS.forEach(ch => {
- 	if (ch.secret) return; 
-      if (ch.group && ch.group !== lastGroup) {
-        lastGroup = ch.group;
+  const prevCh = ch.prev ? CHAPTERS.find(c => c.id === ch.prev) : null;
+  const nextCh = ch.next ? CHAPTERS.find(c => c.id === ch.next) : null;
 
-        const groupEl = document.createElement("details");
-        groupEl.className = "nav-toggle-group";
-        groupEl.open = false;
+  // 當前章節群組，預設展開
+  const groupEl = document.createElement("details");
+  groupEl.className = "nav-toggle-group";
+  groupEl.open = true;  // ← 這裡 true，index.html 的不動所以還是 false
 
-        const summary = document.createElement("summary");
-        summary.className = "nav-item";
-        summary.textContent = "📚 " + ch.group;
-        groupEl.appendChild(summary);
+  const summary = document.createElement("summary");
+  summary.className = "nav-item";
+  summary.textContent = "📚 " + ch.group;
+  groupEl.appendChild(summary);
 
-        groupContent = document.createElement("div");
-        groupContent.className = "nav-toggle-content";
-        groupEl.appendChild(groupContent);
+  const groupContent = document.createElement("div");
+  groupContent.className = "nav-toggle-content";
 
-        nav.appendChild(groupEl);
-      }
-
-      const a = document.createElement("a");
-      a.className = "nav-item" + (ch.available ? "" : " disabled") + (ch.id === currentId ? " active" : "");
-	a.textContent = (ch.id === currentId)
-	  ? ch.nav.replace(/^📘/, "📖")
-	  : ch.nav;
-
-      if (ch.available) {
-        a.href = "reader.html?ch=" + ch.id;
-      } else {
-        a.href = "javascript:void(0)";
-      }
-
-      (groupContent || nav).appendChild(a);
-    });
+  // 上一篇：直接顯示篇名
+  if (prevCh) {
+    const a = document.createElement("a");
+    a.className = "nav-item" + (prevCh.available ? "" : " disabled");
+    a.textContent = prevCh.nav;
+    a.href = prevCh.available ? "reader.html?ch=" + prevCh.id : "javascript:void(0)";
+    groupContent.appendChild(a);
   }
+
+  // 當前章節
+  const current = document.createElement("a");
+  current.className = "nav-item active";
+  current.textContent = ch.nav.replace(/^📘/, "📖");
+  current.href = "javascript:void(0)";
+  groupContent.appendChild(current);
+
+  // 下一篇：直接顯示篇名
+  if (nextCh) {
+    const a = document.createElement("a");
+    a.className = "nav-item" + (nextCh.available ? "" : " disabled");
+    a.textContent = nextCh.nav;
+    a.href = nextCh.available ? "reader.html?ch=" + nextCh.id : "javascript:void(0)";
+    groupContent.appendChild(a);
+  }
+
+  groupEl.appendChild(groupContent);
+  nav.appendChild(groupEl);
+}
 
   async function loadChapter(id) {
     const ch = CHAPTERS.find(c => c.id === id);
