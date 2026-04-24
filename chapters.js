@@ -65,8 +65,17 @@ const CHAPTERS = [
   group:"第一章",
   nav:"📘 06：整備",
   title:"06：整備",
-  available:false,
+  available:true,
   filePath:"chapters/part1/ch6.txt",
+  cg:[]
+},
+{
+  id:"ch7",
+  group:"第一章",
+  nav:"📘 07：初次配合",
+  title:"07：初次配合",
+  available:false,
+  filePath:"chapters/part1/ch7.txt",
   cg:[]
 }
 
