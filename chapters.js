@@ -6,6 +6,8 @@ const CHAPTERS = [
   title:"00：印提",
   available:true,
   secret:true,
+  r18:true, 
+  denyRedirect:"index.html",
   filePath:"chapters/part1/ch0.txt",
   cg:[
     { src:"images/SideCG/第0章-印提.png", alt:"印提 CG" }
