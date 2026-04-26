@@ -520,7 +520,9 @@ function buildSidebar(currentId) {
   if (prevCh) {
     const a = document.createElement("a");
     a.className = "nav-item" + (prevCh.available ? "" : " disabled");
-    a.textContent = prevCh.nav;
+    a.textContent = prevCh.r18 && !sessionStorage.getItem("ageConfirmed_" + prevCh.id)
+      ? prevCh.nav.replace(/^📘/, "🔒")
+      : prevCh.nav;
     a.href = prevCh.available ? "reader.html?ch=" + prevCh.id : "javascript:void(0)";
     groupContent.appendChild(a);
   }
@@ -536,7 +538,9 @@ function buildSidebar(currentId) {
   if (nextCh) {
     const a = document.createElement("a");
     a.className = "nav-item" + (nextCh.available ? "" : " disabled");
-    a.textContent = nextCh.nav;
+    a.textContent = nextCh.r18 && !sessionStorage.getItem("ageConfirmed_" + nextCh.id)
+      ? nextCh.nav.replace(/^📘/, "🔒")
+      : nextCh.nav;
     a.href = nextCh.available ? "reader.html?ch=" + nextCh.id : "javascript:void(0)";
     groupContent.appendChild(a);
   }
