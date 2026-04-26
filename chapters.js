@@ -79,7 +79,7 @@ const CHAPTERS = [
   cg:[]
 },
 {
-  id:"ch7",
+  id:"ch8",
   group:"第一章",
   nav:"📘 08：遺跡探索",
   title:"08：遺跡探索",
