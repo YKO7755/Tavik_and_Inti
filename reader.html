@@ -472,15 +472,21 @@
     loadChapter(target);
   }
 
-  function denyAge() {
-    document.getElementById("ageModal").style.display = "none";
+ function denyAge() {
+  document.getElementById("ageModal").style.display = "none";
 
-    const ch = CHAPTERS.find(c => c.id === pendingChapter);
-    const redirectId = ch?.denyRedirect || ch?.prev || "ch1";
+  const ch = CHAPTERS.find(c => c.id === pendingChapter);
+  const redirect = ch?.denyRedirect || ch?.prev || "ch1";
 
-    pendingChapter = null;
-    loadChapter(redirectId);
+  pendingChapter = null;
+
+  if (redirect === "index") {
+    window.location.href = "index.html";
+    return;
   }
+
+  loadChapter(redirect);
+}
 
   window.onclick = function (e) {
     if (e.target === document.getElementById("imageModal")) closeModal();
