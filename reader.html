@@ -301,6 +301,50 @@
 
     .lightbox.active .lightbox-content { opacity: 1; }
 
+.age-modal-box {
+  margin: 15% auto;
+  width: 90%;
+  max-width: 420px;
+  background: #222;
+  border: 1px solid var(--notion-border);
+  border-radius: 12px;
+  padding: 28px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+.age-modal-box h2 {
+  border-bottom: none;
+  margin: 0 auto 12px auto;
+  padding-bottom: 0;
+  text-align: center;
+}
+
+.age-modal-box p {
+  color: #c4c4c4;
+  line-height: 1.8;
+}
+
+.age-modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.age-modal-actions button {
+  background: none;
+  border: 1px solid var(--notion-border);
+  color: var(--notion-text);
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.age-modal-actions button:hover {
+  background: #2c2c2c;
+}
+
     .site-footer {
       text-align: center;
       color: #666;
@@ -359,6 +403,17 @@
   <div class="modal-content" id="modal-inner"></div>
 </div>
 
+<div id="ageModal" class="modal">
+  <div class="age-modal-box">
+    <h2>⚠️ 年齡確認</h2>
+    <p>本章節包含限制級內容。請確認您已滿18歲。</p>
+    <div class="age-modal-actions">
+      <button onclick="confirmAge()">是，我已滿18歲</button>
+      <button onclick="denyAge()">否，返回</button>
+    </div>
+  </div>
+</div>
+
 <div id="lightbox" class="lightbox" onclick="closeLightbox()">
   <img id="lightbox-img" class="lightbox-content" src="" alt="大圖檢視">
 </div>
@@ -397,6 +452,34 @@
       lb.style.display = "none";
       document.getElementById("lightbox-img").src = "";
     }, 300);
+  }
+
+  let pendingChapter = null;
+
+  function showAgeModal(chId) {
+    pendingChapter = chId;
+    document.getElementById("ageModal").style.display = "block";
+  }
+
+  function confirmAge() {
+    if (!pendingChapter) return;
+
+    sessionStorage.setItem("ageConfirmed_" + pendingChapter, "true");
+    document.getElementById("ageModal").style.display = "none";
+
+    const target = pendingChapter;
+    pendingChapter = null;
+    loadChapter(target);
+  }
+
+  function denyAge() {
+    document.getElementById("ageModal").style.display = "none";
+
+    const ch = CHAPTERS.find(c => c.id === pendingChapter);
+    const redirectId = ch?.denyRedirect || ch?.prev || "ch1";
+
+    pendingChapter = null;
+    loadChapter(redirectId);
   }
 
   window.onclick = function (e) {
@@ -464,6 +547,11 @@ function buildSidebar(currentId) {
       if (firstAvailable) {
         loadChapter(firstAvailable.id);
       }
+      return;
+    }
+
+    if (ch.r18 && !sessionStorage.getItem("ageConfirmed_" + ch.id)) {
+      showAgeModal(ch.id);
       return;
     }
 
