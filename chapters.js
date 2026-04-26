@@ -77,7 +77,7 @@ const CHAPTERS = [
   available:true,
   filePath:"chapters/part1/ch7.txt",
   cg:[]
-}
+},
 {
   id:"ch7",
   group:"第一章",
@@ -86,8 +86,7 @@ const CHAPTERS = [
   available:false,
   filePath:"chapters/part1/ch8.txt",
   cg:[]
-},
-
+}
 
 ];
 
