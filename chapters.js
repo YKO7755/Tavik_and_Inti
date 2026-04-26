@@ -7,7 +7,7 @@ const CHAPTERS = [
   available:true,
   secret:true,
   r18:true, 
-  denyRedirect:"index.html",
+  denyRedirect:"index",
   filePath:"chapters/part1/ch0.txt",
   cg:[
     { src:"images/SideCG/第0章-印提.png", alt:"印提 CG" }
