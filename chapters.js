@@ -85,8 +85,19 @@ const CHAPTERS = [
   group:"第一章",
   nav:"📘 08：遺跡探索",
   title:"08：遺跡探索",
-  available:false,
+  available:true,
   filePath:"chapters/part1/ch8.txt",
+  cg:[
+    { src:"images/cg/遺跡探險.png", alt:"遺跡" }
+]
+},
+{
+  id:"ch8",
+  group:"第一章",
+  nav:"📘 09：回營",
+  title:"09：回營",
+  available:false,
+  filePath:"chapters/part1/ch9.txt",
   cg:[]
 }
 
