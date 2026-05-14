@@ -96,10 +96,20 @@ const CHAPTERS = [
   group:"第一章",
   nav:"📘 09：回營",
   title:"09：回營",
-  available:false,
+  available:true,
   filePath:"chapters/part1/ch9.txt",
   cg:[]
+},
+{
+  id:"ch10",
+  group:"第一章",
+  nav:"📘 10：廚藝",
+  title:"10：廚藝",
+  available:false,
+  filePath:"chapters/part1/ch10.txt",
+  cg:[]
 }
+
 
 ];
 
