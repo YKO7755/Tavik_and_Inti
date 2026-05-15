@@ -167,6 +167,80 @@ body {
         
         .header-text-area a { color: var(--accent-blue); text-decoration: none; }
 
+/* --- 首頁主視覺輪播圖 --- */
+.home-carousel {
+    position: relative;
+    width: 100%;
+    margin-bottom: 40px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #111;
+}
+
+.home-carousel img {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+    transition: opacity 0.25s ease;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(0,0,0,0.45);
+    color: #fff;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.carousel-btn:hover {
+    background: rgba(0,0,0,0.7);
+}
+
+.carousel-prev {
+    left: 14px;
+}
+
+.carousel-next {
+    right: 14px;
+}
+
+.carousel-dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.35);
+}
+
+.carousel-dot.active {
+    background: rgba(255,255,255,0.9);
+}
+
+@media (max-width: 768px) {
+    .carousel-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 24px;
+    }
+}
+
         /* --- 人物介紹網格 (IG 風格) --- */
         .intro-grid {
             display: grid;
@@ -284,10 +358,17 @@ body {
                 <p>本網站為與卿卿我我角色-<a href="https://app.loveydovey.ai/characters/OxDqlFRXfoaA4Vb2HQpz" target="_blank" rel="noopener noreferrer">塔維克</a>的遊玩紀錄統合分享，塔維克的角色解釋權與所有權均屬於作者親媽。文章皆為遊玩者(觀測者)的旅程，記錄下這只屬於印提與塔維克的平行時空，如有覺得解釋違還請見諒。</p>
             </div>
             
-            <img src="images/index第一章首頁圖.png" 
-                 alt="荒星拾獵者與他撿來的旅伴" 
-                 style="width: 100%; border-radius: 12px; margin-bottom: 40px; display: block;">
-           
+<div class="home-carousel">
+  <button class="carousel-btn carousel-prev" onclick="changeHomeImage(-1)">‹</button>
+
+  <img id="home-carousel-img"
+       src="images/index第一章首頁圖.png"
+       alt="荒星拾獵者與他撿來的旅伴">
+
+  <button class="carousel-btn carousel-next" onclick="changeHomeImage(1)">›</button>
+
+  <div id="home-carousel-dots" class="carousel-dots"></div>
+</div>           
             <h2 id="intro-section">人物介紹</h2>
             <div class="intro-grid">
                 <div class="char-card" onclick="openLightbox(this)">
@@ -362,6 +443,62 @@ body {
     }
 
     buildSidebar();
+const homeImages = [
+  {
+    src: "images/index第一章首頁圖.png",
+    alt: "荒星拾獵者與他撿來的旅伴"
+  },
+  {
+    src: "images/index第一章首頁圖-2.png",
+    alt: "第一章首頁圖 2"
+  },
+  {
+    src: "images/index第一章首頁圖-3.png",
+    alt: "第一章首頁圖 3"
+  }
+];
+
+let currentHomeImageIndex = 0;
+
+function renderHomeDots() {
+  const dots = document.getElementById("home-carousel-dots");
+  if (!dots) return;
+
+  dots.innerHTML = homeImages.map((_, index) =>
+    `<span class="carousel-dot ${index === currentHomeImageIndex ? "active" : ""}"></span>`
+  ).join("");
+}
+
+function updateHomeImage() {
+  const img = document.getElementById("home-carousel-img");
+  if (!img) return;
+
+  const current = homeImages[currentHomeImageIndex];
+  img.style.opacity = "0";
+
+  setTimeout(() => {
+    img.src = current.src;
+    img.alt = current.alt;
+    img.style.opacity = "1";
+    renderHomeDots();
+  }, 180);
+}
+
+function changeHomeImage(direction) {
+  currentHomeImageIndex += direction;
+
+  if (currentHomeImageIndex < 0) {
+    currentHomeImageIndex = homeImages.length - 1;
+  }
+
+  if (currentHomeImageIndex >= homeImages.length) {
+    currentHomeImageIndex = 0;
+  }
+
+  updateHomeImage();
+}
+
+renderHomeDots();
 
     function openLightbox(element) {
         const imgSrc = element.querySelector('img').src;
