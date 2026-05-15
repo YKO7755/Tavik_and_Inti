@@ -209,11 +209,7 @@ body {
     pointer-events: auto;
 }
 
-@media (max-width: 768px) {
-    .carousel-btn {
-        opacity: 1;
-        pointer-events: auto;
-    }
+
 }
 .carousel-btn:hover {
     background: rgba(0,0,0,0.7);
@@ -235,6 +231,14 @@ body {
     display: flex;
     justify-content: center;
     gap: 8px;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+.home-carousel:hover .carousel-dots {
+    opacity: 1;
 }
 
 .carousel-dot {
