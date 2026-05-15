@@ -296,6 +296,51 @@ body {
         .char-info h3 { margin: 0 0 10px 0; font-size: 1.4em; color: #fff; }
         .char-info p { margin: 0; font-size: 0.95em; line-height: 1.6; color: #bbb; }
 
+/* --- 首頁故事導入 --- */
+.story-intro {
+    max-width: 680px;
+    margin: -40px auto 80px auto;
+    padding: 28px 32px;
+    border: 1px solid var(--notion-border);
+    border-radius: 14px;
+    background: rgba(255,255,255,0.03);
+    text-align: center;
+}
+
+.story-intro p {
+    margin: 0;
+    color: #cfcfcf;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.08em;
+    line-height: 1.9;
+    letter-spacing: 0.03em;
+    text-align: left;
+}
+
+.story-start-link {
+    display: inline-block;
+    margin-top: 24px;
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 1px solid transparent;
+}
+
+.story-start-link:hover {
+    border-bottom-color: var(--accent-blue);
+}
+
+@media (max-width: 768px) {
+    .story-intro {
+        margin: -50px auto 60px auto;
+        padding: 22px 20px;
+    }
+
+    .story-intro p {
+        font-size: 1em;
+        line-height: 1.85;
+    }
+}
         /* --- 大圖顯示 (Lightbox) --- */
         .lightbox {
             display: none;
