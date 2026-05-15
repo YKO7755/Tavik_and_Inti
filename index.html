@@ -209,8 +209,6 @@ body {
     pointer-events: auto;
 }
 
-
-}
 .carousel-btn:hover {
     background: rgba(0,0,0,0.7);
 }
@@ -470,6 +468,8 @@ const homeImages = [
 ];
 
 let currentHomeImageIndex = 0;
+let homeCarouselTimer = null;
+const homeCarouselDelay = 5000; // 5秒換一張
 
 function renderHomeDots() {
   const dots = document.getElementById("home-carousel-dots");
@@ -507,9 +507,27 @@ function changeHomeImage(direction) {
   }
 
   updateHomeImage();
+
+  startHomeCarousel();
+}
+
+function startHomeCarousel() {
+  stopHomeCarousel();
+
+  homeCarouselTimer = setInterval(() => {
+    changeHomeImage(1);
+  }, homeCarouselDelay);
+}
+
+function stopHomeCarousel() {
+  if (homeCarouselTimer) {
+    clearInterval(homeCarouselTimer);
+    homeCarouselTimer = null;
+  }
 }
 
 renderHomeDots();
+startHomeCarousel();
 
     function openLightbox(element) {
         const imgSrc = element.querySelector('img').src;
