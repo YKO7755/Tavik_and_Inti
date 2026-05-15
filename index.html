@@ -198,8 +198,23 @@ body {
     line-height: 1;
     cursor: pointer;
     z-index: 2;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, background 0.2s ease;
 }
 
+.home-carousel:hover .carousel-btn {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+    .carousel-btn {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
 .carousel-btn:hover {
     background: rgba(0,0,0,0.7);
 }
