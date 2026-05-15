@@ -298,49 +298,53 @@ body {
 
 /* --- 首頁故事導入 --- */
 .story-intro {
-    max-width: 680px;
-    margin: -40px auto 80px auto;
-    padding: 28px 32px;
-    border: 1px solid var(--notion-border);
-    border-radius: 14px;
-    background: rgba(255,255,255,0.03);
+    max-width: 800px;
+    margin: -50px auto 80px auto;
+    padding: 32px 36px;
+    background: var(--card-bg);
+    border-radius: 12px;
     text-align: center;
 }
 
 .story-intro p {
     margin: 0;
-    color: #cfcfcf;
-    font-family: 'Noto Serif TC', serif;
-    font-size: 1.08em;
+    color: #bbb;
+    font-size: 1.05em;
     line-height: 1.9;
     letter-spacing: 0.03em;
-    text-align: left;
+    text-align: center;
 }
 
 .story-start-link {
     display: inline-block;
     margin-top: 24px;
-    color: var(--accent-blue);
+    padding: 8px 18px;
+    border-radius: 999px;
+    color: #fff;
+    background: rgba(255,255,255,0.08);
     text-decoration: none;
     font-weight: bold;
-    border-bottom: 1px solid transparent;
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .story-start-link:hover {
-    border-bottom-color: var(--accent-blue);
+    background: #2c2c2c;
+    transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
     .story-intro {
         margin: -50px auto 60px auto;
-        padding: 22px 20px;
+        padding: 24px 22px;
     }
 
     .story-intro p {
         font-size: 1em;
         line-height: 1.85;
+        text-align: left;
     }
 }
+
         /* --- 大圖顯示 (Lightbox) --- */
         .lightbox {
             display: none;
