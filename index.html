@@ -464,8 +464,11 @@ const homeImages = [
   {
     src: "images/index第一章首頁圖.png",
     alt: "荒星拾獵者與他撿來的旅伴"
+  },
+  {
+    src: "images/塔維克.png",
+    alt: "荒星拾獵者與他撿來的旅伴"
   }
-
 ];
 
 let currentHomeImageIndex = 0;
@@ -486,6 +489,7 @@ function updateHomeImage() {
   if (!img) return;
 
   const current = homeImages[currentHomeImageIndex];
+
   img.style.opacity = "0";
 
   setTimeout(() => {
@@ -496,7 +500,7 @@ function updateHomeImage() {
   }, 180);
 }
 
-function changeHomeImage(direction) {
+function moveHomeImage(direction, resetTimer = true) {
   currentHomeImageIndex += direction;
 
   if (currentHomeImageIndex < 0) {
@@ -509,8 +513,34 @@ function changeHomeImage(direction) {
 
   updateHomeImage();
 
-  startHomeCarousel();
+  if (resetTimer) {
+    startHomeCarousel();
+  }
 }
+
+function changeHomeImage(direction) {
+  moveHomeImage(direction, true);
+}
+
+function startHomeCarousel() {
+  stopHomeCarousel();
+
+  if (homeImages.length <= 1) return;
+
+  homeCarouselTimer = setInterval(() => {
+    moveHomeImage(1, false);
+  }, homeCarouselDelay);
+}
+
+function stopHomeCarousel() {
+  if (homeCarouselTimer) {
+    clearInterval(homeCarouselTimer);
+    homeCarouselTimer = null;
+  }
+}
+
+renderHomeDots();
+startHomeCarousel();
 
 function startHomeCarousel() {
   stopHomeCarousel();
