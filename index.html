@@ -539,23 +539,6 @@ function stopHomeCarousel() {
 renderHomeDots();
 startHomeCarousel();
 
-function startHomeCarousel() {
-  stopHomeCarousel();
-
-  homeCarouselTimer = setInterval(() => {
-    changeHomeImage(1);
-  }, homeCarouselDelay);
-}
-
-function stopHomeCarousel() {
-  if (homeCarouselTimer) {
-    clearInterval(homeCarouselTimer);
-    homeCarouselTimer = null;
-  }
-}
-
-renderHomeDots();
-startHomeCarousel();
 
     function openLightbox(element) {
         const imgSrc = element.querySelector('img').src;
@@ -568,7 +551,7 @@ startHomeCarousel();
 
     function closeLightbox() {
         const lb = document.getElementById("lightbox");
-        lb.classList.remove('ac	tive');
+        lb.classList.remove('active');
         setTimeout(() => { lb.style.display = "none"; }, 300);
     }
 </script>
