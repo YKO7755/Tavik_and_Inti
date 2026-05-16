@@ -153,6 +153,7 @@
 
     .description { color: #999999; }
     .dialogue { color: #ffffff; }
+	.inner-dialogue { color: #e0e0e0; }
 
 .novel-text a {
   color: var(--accent-blue);
@@ -600,15 +601,16 @@ function buildSidebar(currentId) {
 
       const rawText = await response.text();
 
-	const formattedText = rawText
-	  .replace(/&/g, "&amp;")
-	  .replace(/</g, "&lt;")
-	  .replace(/>/g, "&gt;")
-	  .replace(/「([^」]+)」/g, '<span class="dialogue">「$1」</span>')
-	  .replace(
-	    /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
-	    '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
-	  );
+const formattedText = rawText
+  .replace(/&/g, "&amp;")
+  .replace(/</g, "&lt;")
+  .replace(/>/g, "&gt;")
+  .replace(/^「([^」]+)」$/gm, '<span class="dialogue">「$1」</span>')
+  .replace(/^『([^』]+)』$/gm, '<span class="inner-dialogue">『$1』</span>')
+  .replace(
+    /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+    '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
+  );
 
       document.getElementById("chapter-content").innerHTML = `
         <h2>${ch.title}</h2>
