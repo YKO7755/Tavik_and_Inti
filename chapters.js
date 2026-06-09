@@ -105,8 +105,17 @@ const CHAPTERS = [
   group:"第一章",
   nav:"📘 10：廚藝",
   title:"10：廚藝",
-  available:false,
+  available:true,
   filePath:"chapters/part1/ch10.txt",
+  cg:[]
+},
+{
+  id:"ch11",
+  group:"第一章",
+  nav:"📘 11：他們還在那裡，我在這裡。",
+  title:"11：他們還在那裡，我在這裡。",
+  available:false,
+  filePath:"chapters/part1/ch11.txt",
   cg:[]
 }
 
