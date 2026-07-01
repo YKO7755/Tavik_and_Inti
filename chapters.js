@@ -114,10 +114,20 @@ const CHAPTERS = [
   group:"第一章",
   nav:"📘 11：他們還在那裡，我在這裡。",
   title:"11：他們還在那裡，我在這裡。",
-  available:false,
+  available:true,
   filePath:"chapters/part1/ch11.txt",
   cg:[]
+},
+{
+  id:"ch12",
+  group:"第一章",
+  nav:"📘 12：3S級",
+  title:"12：3S級",
+  available:false,
+  filePath:"chapters/part1/ch12.txt",
+  cg:[]
 }
+
 
 
 ];
